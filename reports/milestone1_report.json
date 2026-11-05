@@ -1,0 +1,19 @@
+{
+  "project": "CodeSift",
+  "experiment": "milestone_1_discount_bug",
+  "results": {
+    "buggy_implementation": {
+      "test_file": "test_discount_buggy.py",
+      "exit_code": 1,
+      "passed": false,
+      "output": "F                                                                        [100%]\n================================== FAILURES ===================================\n__________________________ test_ten_percent_discount __________________________\ntests\\test_discount_buggy.py:5: in test_ten_percent_discount\n    assert discount_buggy(100, 10) == 90\nE   assert 10.0 == 90\nE    +  where 10.0 = discount_buggy(100, 10)\n=========================== short test summary info ===========================\nFAILED tests/test_discount_buggy.py::test_ten_percent_discount - assert 10.0 ...\n1 failed in 0.09s\n\n"
+    },
+    "fixed_implementation": {
+      "test_file": "test_discount_fixed.py",
+      "exit_code": 0,
+      "passed": true,
+      "output": ".                                                                        [100%]\n1 passed in 0.02s\n\n"
+    }
+  },
+  "bug_detected": true
+}

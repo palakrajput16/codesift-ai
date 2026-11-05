@@ -1,0 +1,690 @@
+{
+  "project": "CodeSift",
+  "experiment": "Baseline vs Execution Feedback",
+  "model": "gemini-3.5-flash-lite",
+  "max_tests_per_suite": 8,
+  "started_at": "2026-10-30T09:47:28.145767+00:00",
+  "completed_at": "2026-10-30T09:47:32.728792+00:00",
+  "results": [
+    {
+      "bug_id": "CS002",
+      "category": "boundary",
+      "description": "Incorrect adult-age boundary",
+      "function_name": "is_adult",
+      "baseline": {
+        "suite": {
+          "function_name": "is_adult",
+          "tests": [
+            {
+              "name": "test_age_well_above_eighteen",
+              "args": [
+                25
+              ],
+              "expected": true
+            },
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true
+            },
+            {
+              "name": "test_age_just_below_eighteen",
+              "args": [
+                17
+              ],
+              "expected": false
+            },
+            {
+              "name": "test_age_well_below_eighteen",
+              "args": [
+                5
+              ],
+              "expected": false
+            },
+            {
+              "name": "test_age_zero",
+              "args": [
+                0
+              ],
+              "expected": false
+            },
+            {
+              "name": "test_age_negative",
+              "args": [
+                -1
+              ],
+              "expected": false
+            },
+            {
+              "name": "test_age_large_number",
+              "args": [
+                150
+              ],
+              "expected": true
+            }
+          ]
+        },
+        "evaluation": {
+          "bug_id": "CS002",
+          "function_name": "is_adult",
+          "total_generated_tests": 7,
+          "bug_detected": true,
+          "detected_test_count": 1,
+          "false_positive_count": 0,
+          "buggy_results": [
+            {
+              "name": "test_age_well_above_eighteen",
+              "args": [
+                25
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true,
+              "actual": false,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "test_age_just_below_eighteen",
+              "args": [
+                17
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_well_below_eighteen",
+              "args": [
+                5
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_zero",
+              "args": [
+                0
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_negative",
+              "args": [
+                -1
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_large_number",
+              "args": [
+                150
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "fixed_results": [
+            {
+              "name": "test_age_well_above_eighteen",
+              "args": [
+                25
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_just_below_eighteen",
+              "args": [
+                17
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_well_below_eighteen",
+              "args": [
+                5
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_zero",
+              "args": [
+                0
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_negative",
+              "args": [
+                -1
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_large_number",
+              "args": [
+                150
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "detected_tests": [
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true,
+              "actual": false,
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "false_positive_tests": []
+        },
+        "generation_latency_seconds": 1.8902
+      },
+      "feedback": {
+        "initial_suite": {
+          "function_name": "is_adult",
+          "tests": [
+            {
+              "name": "test_age_below_eighteen",
+              "args": [
+                17
+              ],
+              "expected": false
+            },
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true
+            },
+            {
+              "name": "test_age_above_eighteen",
+              "args": [
+                19
+              ],
+              "expected": true
+            },
+            {
+              "name": "test_age_zero",
+              "args": [
+                0
+              ],
+              "expected": false
+            },
+            {
+              "name": "test_age_senior",
+              "args": [
+                100
+              ],
+              "expected": true
+            },
+            {
+              "name": "test_age_negative",
+              "args": [
+                -1
+              ],
+              "expected": false
+            }
+          ]
+        },
+        "initial_execution": [
+          {
+            "name": "test_age_below_eighteen",
+            "args": [
+              17
+            ],
+            "expected": false,
+            "actual": false,
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "test_age_exactly_eighteen",
+            "args": [
+              18
+            ],
+            "expected": true,
+            "actual": false,
+            "status": "FAIL",
+            "error": null
+          },
+          {
+            "name": "test_age_above_eighteen",
+            "args": [
+              19
+            ],
+            "expected": true,
+            "actual": true,
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "test_age_zero",
+            "args": [
+              0
+            ],
+            "expected": false,
+            "actual": false,
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "test_age_senior",
+            "args": [
+              100
+            ],
+            "expected": true,
+            "actual": true,
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "test_age_negative",
+            "args": [
+              -1
+            ],
+            "expected": false,
+            "actual": false,
+            "status": "PASS",
+            "error": null
+          }
+        ],
+        "initial_evaluation": {
+          "bug_id": "CS002",
+          "function_name": "is_adult",
+          "total_generated_tests": 6,
+          "bug_detected": true,
+          "detected_test_count": 1,
+          "false_positive_count": 0,
+          "buggy_results": [
+            {
+              "name": "test_age_below_eighteen",
+              "args": [
+                17
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true,
+              "actual": false,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "test_age_above_eighteen",
+              "args": [
+                19
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_zero",
+              "args": [
+                0
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_senior",
+              "args": [
+                100
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_negative",
+              "args": [
+                -1
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "fixed_results": [
+            {
+              "name": "test_age_below_eighteen",
+              "args": [
+                17
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_above_eighteen",
+              "args": [
+                19
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_zero",
+              "args": [
+                0
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_senior",
+              "args": [
+                100
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_negative",
+              "args": [
+                -1
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "detected_tests": [
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true,
+              "actual": false,
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "false_positive_tests": []
+        },
+        "revised_suite": {
+          "function_name": "is_adult",
+          "tests": [
+            {
+              "name": "test_age_below_eighteen",
+              "args": [
+                17
+              ],
+              "expected": false
+            },
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true
+            },
+            {
+              "name": "test_age_above_eighteen",
+              "args": [
+                19
+              ],
+              "expected": true
+            },
+            {
+              "name": "test_age_zero",
+              "args": [
+                0
+              ],
+              "expected": false
+            },
+            {
+              "name": "test_age_senior",
+              "args": [
+                100
+              ],
+              "expected": true
+            },
+            {
+              "name": "test_age_negative",
+              "args": [
+                -1
+              ],
+              "expected": false
+            }
+          ]
+        },
+        "revised_evaluation": {
+          "bug_id": "CS002",
+          "function_name": "is_adult",
+          "total_generated_tests": 6,
+          "bug_detected": true,
+          "detected_test_count": 1,
+          "false_positive_count": 0,
+          "buggy_results": [
+            {
+              "name": "test_age_below_eighteen",
+              "args": [
+                17
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true,
+              "actual": false,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "test_age_above_eighteen",
+              "args": [
+                19
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_zero",
+              "args": [
+                0
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_senior",
+              "args": [
+                100
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_negative",
+              "args": [
+                -1
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "fixed_results": [
+            {
+              "name": "test_age_below_eighteen",
+              "args": [
+                17
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_above_eighteen",
+              "args": [
+                19
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_zero",
+              "args": [
+                0
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_senior",
+              "args": [
+                100
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_negative",
+              "args": [
+                -1
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "detected_tests": [
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true,
+              "actual": false,
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "false_positive_tests": []
+        },
+        "initial_generation_latency_seconds": 1.1613,
+        "revision_latency_seconds": 1.5236,
+        "total_generation_latency_seconds": 2.6849
+      }
+    }
+  ],
+  "errors": []
+}

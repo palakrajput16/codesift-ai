@@ -1,0 +1,43 @@
+{
+  "project": "CodeSift",
+  "stage": "milestone_3_ai_generation_demo",
+  "model": "gemini-3.5-flash-lite",
+  "function_name": "is_adult",
+  "tests": [
+    {
+      "name": "test_age_below_eighteen",
+      "args": [
+        17
+      ],
+      "expected": false
+    },
+    {
+      "name": "test_age_exactly_eighteen",
+      "args": [
+        18
+      ],
+      "expected": true
+    },
+    {
+      "name": "test_age_above_eighteen",
+      "args": [
+        19
+      ],
+      "expected": true
+    },
+    {
+      "name": "test_age_zero",
+      "args": [
+        0
+      ],
+      "expected": false
+    },
+    {
+      "name": "test_age_negative",
+      "args": [
+        -1
+      ],
+      "expected": false
+    }
+  ]
+}

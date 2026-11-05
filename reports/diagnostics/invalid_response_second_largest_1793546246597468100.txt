@@ -1,0 +1,58 @@
+{
+    "function_name": "second_largest",
+    "tests": [
+        {
+            "name": "test_standard_list",
+            "args": [
+                [1, 2, 3, 4, 5]
+            ],
+            "expected": 4
+        },
+        {
+            "name": "test_unsorted_list_with_negatives",
+            "args": [
+                [-10, -3, -20, -2]
+            ],
+            "expected": -3
+        },
+        {
+            "name": "test_single_element_list",
+            "args": [
+                [42]
+            ],
+            "expected": null
+        },
+        {
+            "name": "test_empty_list",
+            "args": []
+        },
+        {
+            "name": "test_exactly_two_distinct_values",
+            "args": [
+                [100, 50]
+            ],
+            "expected": 50
+        },
+        {
+            "name": "test_list_with_duplicates_handled",
+            "args": [
+                [5, 5, 4, 3, 2, 1]
+            ],
+            "expected": 4
+        },
+        {
+            "name": "test_all_elements_same",
+            "args": [
+                [7, 7, 7, 7]
+            ],
+            "expected": null
+        },
+        {
+            "name": "test_multiple_maximum_values_handled",
+            "args": [
+                [1, 10, 10, 5]
+            ],
+            "expected": 5
+        }
+    ]
+}

@@ -1,0 +1,331 @@
+{
+  "project": "CodeSift",
+  "benchmark_version": "0.1",
+  "generated_at": "2026-10-30T09:10:37.759197+00:00",
+  "results": [
+    {
+      "bug_id": "CS001",
+      "category": "arithmetic",
+      "description": "Incorrect final price after a discount",
+      "buggy_caught": true,
+      "fixed_passed_all": true,
+      "bug_detected": true,
+      "tests": [
+        {
+          "test_name": "ten_percent",
+          "buggy_status": "failed",
+          "buggy_actual": 10.0,
+          "buggy_error": null,
+          "fixed_status": "passed",
+          "fixed_actual": 90.0,
+          "fixed_error": null,
+          "expected": 90
+        },
+        {
+          "test_name": "twenty_five_percent",
+          "buggy_status": "failed",
+          "buggy_actual": 50.0,
+          "buggy_error": null,
+          "fixed_status": "passed",
+          "fixed_actual": 150.0,
+          "fixed_error": null,
+          "expected": 150
+        },
+        {
+          "test_name": "zero_discount",
+          "buggy_status": "failed",
+          "buggy_actual": 0.0,
+          "buggy_error": null,
+          "fixed_status": "passed",
+          "fixed_actual": 100.0,
+          "fixed_error": null,
+          "expected": 100
+        }
+      ]
+    },
+    {
+      "bug_id": "CS002",
+      "category": "boundary",
+      "description": "Incorrect adult-age boundary",
+      "buggy_caught": true,
+      "fixed_passed_all": true,
+      "bug_detected": true,
+      "tests": [
+        {
+          "test_name": "below_boundary",
+          "buggy_status": "passed",
+          "buggy_actual": false,
+          "buggy_error": null,
+          "fixed_status": "passed",
+          "fixed_actual": false,
+          "fixed_error": null,
+          "expected": false
+        },
+        {
+          "test_name": "at_boundary",
+          "buggy_status": "failed",
+          "buggy_actual": false,
+          "buggy_error": null,
+          "fixed_status": "passed",
+          "fixed_actual": true,
+          "fixed_error": null,
+          "expected": true
+        },
+        {
+          "test_name": "above_boundary",
+          "buggy_status": "passed",
+          "buggy_actual": true,
+          "buggy_error": null,
+          "fixed_status": "passed",
+          "fixed_actual": true,
+          "fixed_error": null,
+          "expected": true
+        }
+      ]
+    },
+    {
+      "bug_id": "CS003",
+      "category": "edge_case",
+      "description": "Average calculation fails on empty input",
+      "buggy_caught": true,
+      "fixed_passed_all": true,
+      "bug_detected": true,
+      "tests": [
+        {
+          "test_name": "ordinary_average",
+          "buggy_status": "passed",
+          "buggy_actual": 3.0,
+          "buggy_error": null,
+          "fixed_status": "passed",
+          "fixed_actual": 3.0,
+          "fixed_error": null,
+          "expected": 3
+        },
+        {
+          "test_name": "empty_input",
+          "buggy_status": "error",
+          "buggy_actual": null,
+          "buggy_error": "ZeroDivisionError: division by zero",
+          "fixed_status": "passed",
+          "fixed_actual": null,
+          "fixed_error": null,
+          "expected": null
+        },
+        {
+          "test_name": "single_value",
+          "buggy_status": "passed",
+          "buggy_actual": 5.0,
+          "buggy_error": null,
+          "fixed_status": "passed",
+          "fixed_actual": 5.0,
+          "fixed_error": null,
+          "expected": 5
+        }
+      ]
+    },
+    {
+      "bug_id": "CS004",
+      "category": "data_processing",
+      "description": "Duplicate removal must preserve order",
+      "buggy_caught": true,
+      "fixed_passed_all": true,
+      "bug_detected": true,
+      "tests": [
+        {
+          "test_name": "repeated_values",
+          "buggy_status": "failed",
+          "buggy_actual": [
+            1,
+            2,
+            3
+          ],
+          "buggy_error": null,
+          "fixed_status": "passed",
+          "fixed_actual": [
+            3,
+            1,
+            2
+          ],
+          "fixed_error": null,
+          "expected": [
+            3,
+            1,
+            2
+          ]
+        },
+        {
+          "test_name": "empty_list",
+          "buggy_status": "passed",
+          "buggy_actual": [],
+          "buggy_error": null,
+          "fixed_status": "passed",
+          "fixed_actual": [],
+          "fixed_error": null,
+          "expected": []
+        },
+        {
+          "test_name": "already_unique",
+          "buggy_status": "passed",
+          "buggy_actual": [
+            1,
+            2,
+            3
+          ],
+          "buggy_error": null,
+          "fixed_status": "passed",
+          "fixed_actual": [
+            1,
+            2,
+            3
+          ],
+          "fixed_error": null,
+          "expected": [
+            1,
+            2,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "bug_id": "CS005",
+      "category": "logic",
+      "description": "Middle-value calculation fails on even-length input",
+      "buggy_caught": true,
+      "fixed_passed_all": true,
+      "bug_detected": true,
+      "tests": [
+        {
+          "test_name": "odd_length",
+          "buggy_status": "passed",
+          "buggy_actual": [
+            2
+          ],
+          "buggy_error": null,
+          "fixed_status": "passed",
+          "fixed_actual": [
+            2
+          ],
+          "fixed_error": null,
+          "expected": [
+            2
+          ]
+        },
+        {
+          "test_name": "even_length",
+          "buggy_status": "failed",
+          "buggy_actual": [
+            3
+          ],
+          "buggy_error": null,
+          "fixed_status": "passed",
+          "fixed_actual": [
+            2,
+            3
+          ],
+          "fixed_error": null,
+          "expected": [
+            2,
+            3
+          ]
+        },
+        {
+          "test_name": "empty_list",
+          "buggy_status": "passed",
+          "buggy_actual": [],
+          "buggy_error": null,
+          "fixed_status": "passed",
+          "fixed_actual": [],
+          "fixed_error": null,
+          "expected": []
+        }
+      ]
+    },
+    {
+      "bug_id": "CS006",
+      "category": "data_processing",
+      "description": "Second-largest calculation does not handle duplicate values",
+      "buggy_caught": true,
+      "fixed_passed_all": true,
+      "bug_detected": true,
+      "tests": [
+        {
+          "test_name": "distinct_values",
+          "buggy_status": "passed",
+          "buggy_actual": 4,
+          "buggy_error": null,
+          "fixed_status": "passed",
+          "fixed_actual": 4,
+          "fixed_error": null,
+          "expected": 4
+        },
+        {
+          "test_name": "duplicate_largest",
+          "buggy_status": "failed",
+          "buggy_actual": 5,
+          "buggy_error": null,
+          "fixed_status": "passed",
+          "fixed_actual": 3,
+          "fixed_error": null,
+          "expected": 3
+        },
+        {
+          "test_name": "all_duplicates",
+          "buggy_status": "failed",
+          "buggy_actual": 1,
+          "buggy_error": null,
+          "fixed_status": "passed",
+          "fixed_actual": null,
+          "fixed_error": null,
+          "expected": null
+        },
+        {
+          "test_name": "two_distinct_values",
+          "buggy_status": "failed",
+          "buggy_actual": 8,
+          "buggy_error": null,
+          "fixed_status": "passed",
+          "fixed_actual": 5,
+          "fixed_error": null,
+          "expected": 5
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_bug_cases": 6,
+    "bugs_detected": 6,
+    "bug_detection_rate": 1.0,
+    "fixed_implementations_validated": 6,
+    "total_test_cases": 19,
+    "buggy_test_failures": 10,
+    "fixed_test_passes": 19,
+    "category_summary": {
+      "arithmetic": {
+        "cases": 1,
+        "detected": 1,
+        "detection_rate": 1.0
+      },
+      "boundary": {
+        "cases": 1,
+        "detected": 1,
+        "detection_rate": 1.0
+      },
+      "edge_case": {
+        "cases": 1,
+        "detected": 1,
+        "detection_rate": 1.0
+      },
+      "data_processing": {
+        "cases": 2,
+        "detected": 2,
+        "detection_rate": 1.0
+      },
+      "logic": {
+        "cases": 1,
+        "detected": 1,
+        "detection_rate": 1.0
+      }
+    }
+  }
+}

@@ -1,0 +1,7208 @@
+{
+  "project": "CodeSift",
+  "experiment": "Baseline vs Execution Feedback",
+  "trial_id": "trial_03",
+  "experiment_design": "paired_shared_initial_suite_v1",
+  "generation_prompt_version": "test_generation_v2",
+  "feedback_prompt_version": "execution_feedback_v1",
+  "evaluator_version": "type_aware_float_tolerance_v1",
+  "benchmark_version": "benchmark_v2",
+  "model": "gemini-3.5-flash-lite",
+  "max_tests_per_suite": 8,
+  "started_at": "2026-11-01T15:09:05.079689+00:00",
+  "completed_at": "2026-11-01T15:09:39.221244+00:00",
+  "results": [
+    {
+      "bug_id": "CS001",
+      "category": "arithmetic",
+      "description": "Incorrect final price after a discount",
+      "function_name": "discount",
+      "experiment_design": "paired_shared_initial_suite_v1",
+      "generation_prompt_version": "test_generation_v2",
+      "feedback_prompt_version": "execution_feedback_v1",
+      "evaluator_version": "type_aware_float_tolerance_v1",
+      "benchmark_version": "benchmark_v2",
+      "baseline": {
+        "suite": {
+          "function_name": "discount",
+          "tests": [
+            {
+              "name": "standard_discount",
+              "args": [
+                100.0,
+                20.0
+              ],
+              "expected": 80.0
+            },
+            {
+              "name": "zero_percent_discount",
+              "args": [
+                100.0,
+                0.0
+              ],
+              "expected": 100.0
+            },
+            {
+              "name": "full_discount",
+              "args": [
+                50.0,
+                100.0
+              ],
+              "expected": 0.0
+            },
+            {
+              "name": "fractional_price_and_discount",
+              "args": [
+                49.99,
+                15.5
+              ],
+              "expected": 42.24155
+            },
+            {
+              "name": "zero_price",
+              "args": [
+                0.0,
+                50.0
+              ],
+              "expected": 0.0
+            },
+            {
+              "name": "integer_inputs",
+              "args": [
+                200,
+                10
+              ],
+              "expected": 180.0
+            }
+          ]
+        },
+        "evaluation": {
+          "bug_id": "CS001",
+          "function_name": "discount",
+          "total_generated_tests": 6,
+          "bug_detected": true,
+          "detected_test_count": 5,
+          "false_positive_count": 0,
+          "buggy_results": [
+            {
+              "name": "standard_discount",
+              "args": [
+                100.0,
+                20.0
+              ],
+              "expected": 80.0,
+              "actual": 20.0,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "zero_percent_discount",
+              "args": [
+                100.0,
+                0.0
+              ],
+              "expected": 100.0,
+              "actual": 0.0,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "full_discount",
+              "args": [
+                50.0,
+                100.0
+              ],
+              "expected": 0.0,
+              "actual": 50.0,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "fractional_price_and_discount",
+              "args": [
+                49.99,
+                15.5
+              ],
+              "expected": 42.24155,
+              "actual": 7.74845,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "zero_price",
+              "args": [
+                0.0,
+                50.0
+              ],
+              "expected": 0.0,
+              "actual": 0.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "integer_inputs",
+              "args": [
+                200,
+                10
+              ],
+              "expected": 180.0,
+              "actual": 20.0,
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "fixed_results": [
+            {
+              "name": "standard_discount",
+              "args": [
+                100.0,
+                20.0
+              ],
+              "expected": 80.0,
+              "actual": 80.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "zero_percent_discount",
+              "args": [
+                100.0,
+                0.0
+              ],
+              "expected": 100.0,
+              "actual": 100.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "full_discount",
+              "args": [
+                50.0,
+                100.0
+              ],
+              "expected": 0.0,
+              "actual": 0.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "fractional_price_and_discount",
+              "args": [
+                49.99,
+                15.5
+              ],
+              "expected": 42.24155,
+              "actual": 42.241550000000004,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "zero_price",
+              "args": [
+                0.0,
+                50.0
+              ],
+              "expected": 0.0,
+              "actual": 0.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "integer_inputs",
+              "args": [
+                200,
+                10
+              ],
+              "expected": 180.0,
+              "actual": 180.0,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "detected_tests": [
+            {
+              "name": "standard_discount",
+              "args": [
+                100.0,
+                20.0
+              ],
+              "expected": 80.0,
+              "actual": 20.0,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "zero_percent_discount",
+              "args": [
+                100.0,
+                0.0
+              ],
+              "expected": 100.0,
+              "actual": 0.0,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "full_discount",
+              "args": [
+                50.0,
+                100.0
+              ],
+              "expected": 0.0,
+              "actual": 50.0,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "fractional_price_and_discount",
+              "args": [
+                49.99,
+                15.5
+              ],
+              "expected": 42.24155,
+              "actual": 7.74845,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "integer_inputs",
+              "args": [
+                200,
+                10
+              ],
+              "expected": 180.0,
+              "actual": 20.0,
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "false_positive_tests": []
+        },
+        "generation_latency_seconds": 14.8861
+      },
+      "feedback": {
+        "initial_suite": {
+          "function_name": "discount",
+          "tests": [
+            {
+              "name": "standard_discount",
+              "args": [
+                100.0,
+                20.0
+              ],
+              "expected": 80.0
+            },
+            {
+              "name": "zero_percent_discount",
+              "args": [
+                100.0,
+                0.0
+              ],
+              "expected": 100.0
+            },
+            {
+              "name": "full_discount",
+              "args": [
+                50.0,
+                100.0
+              ],
+              "expected": 0.0
+            },
+            {
+              "name": "fractional_price_and_discount",
+              "args": [
+                49.99,
+                15.5
+              ],
+              "expected": 42.24155
+            },
+            {
+              "name": "zero_price",
+              "args": [
+                0.0,
+                50.0
+              ],
+              "expected": 0.0
+            },
+            {
+              "name": "integer_inputs",
+              "args": [
+                200,
+                10
+              ],
+              "expected": 180.0
+            }
+          ]
+        },
+        "initial_execution": [
+          {
+            "name": "standard_discount",
+            "args": [
+              100.0,
+              20.0
+            ],
+            "expected": 80.0,
+            "actual": 20.0,
+            "status": "FAIL",
+            "error": null
+          },
+          {
+            "name": "zero_percent_discount",
+            "args": [
+              100.0,
+              0.0
+            ],
+            "expected": 100.0,
+            "actual": 0.0,
+            "status": "FAIL",
+            "error": null
+          },
+          {
+            "name": "full_discount",
+            "args": [
+              50.0,
+              100.0
+            ],
+            "expected": 0.0,
+            "actual": 50.0,
+            "status": "FAIL",
+            "error": null
+          },
+          {
+            "name": "fractional_price_and_discount",
+            "args": [
+              49.99,
+              15.5
+            ],
+            "expected": 42.24155,
+            "actual": 7.74845,
+            "status": "FAIL",
+            "error": null
+          },
+          {
+            "name": "zero_price",
+            "args": [
+              0.0,
+              50.0
+            ],
+            "expected": 0.0,
+            "actual": 0.0,
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "integer_inputs",
+            "args": [
+              200,
+              10
+            ],
+            "expected": 180.0,
+            "actual": 20.0,
+            "status": "FAIL",
+            "error": null
+          }
+        ],
+        "initial_evaluation": {
+          "bug_id": "CS001",
+          "function_name": "discount",
+          "total_generated_tests": 6,
+          "bug_detected": true,
+          "detected_test_count": 5,
+          "false_positive_count": 0,
+          "buggy_results": [
+            {
+              "name": "standard_discount",
+              "args": [
+                100.0,
+                20.0
+              ],
+              "expected": 80.0,
+              "actual": 20.0,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "zero_percent_discount",
+              "args": [
+                100.0,
+                0.0
+              ],
+              "expected": 100.0,
+              "actual": 0.0,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "full_discount",
+              "args": [
+                50.0,
+                100.0
+              ],
+              "expected": 0.0,
+              "actual": 50.0,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "fractional_price_and_discount",
+              "args": [
+                49.99,
+                15.5
+              ],
+              "expected": 42.24155,
+              "actual": 7.74845,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "zero_price",
+              "args": [
+                0.0,
+                50.0
+              ],
+              "expected": 0.0,
+              "actual": 0.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "integer_inputs",
+              "args": [
+                200,
+                10
+              ],
+              "expected": 180.0,
+              "actual": 20.0,
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "fixed_results": [
+            {
+              "name": "standard_discount",
+              "args": [
+                100.0,
+                20.0
+              ],
+              "expected": 80.0,
+              "actual": 80.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "zero_percent_discount",
+              "args": [
+                100.0,
+                0.0
+              ],
+              "expected": 100.0,
+              "actual": 100.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "full_discount",
+              "args": [
+                50.0,
+                100.0
+              ],
+              "expected": 0.0,
+              "actual": 0.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "fractional_price_and_discount",
+              "args": [
+                49.99,
+                15.5
+              ],
+              "expected": 42.24155,
+              "actual": 42.241550000000004,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "zero_price",
+              "args": [
+                0.0,
+                50.0
+              ],
+              "expected": 0.0,
+              "actual": 0.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "integer_inputs",
+              "args": [
+                200,
+                10
+              ],
+              "expected": 180.0,
+              "actual": 180.0,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "detected_tests": [
+            {
+              "name": "standard_discount",
+              "args": [
+                100.0,
+                20.0
+              ],
+              "expected": 80.0,
+              "actual": 20.0,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "zero_percent_discount",
+              "args": [
+                100.0,
+                0.0
+              ],
+              "expected": 100.0,
+              "actual": 0.0,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "full_discount",
+              "args": [
+                50.0,
+                100.0
+              ],
+              "expected": 0.0,
+              "actual": 50.0,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "fractional_price_and_discount",
+              "args": [
+                49.99,
+                15.5
+              ],
+              "expected": 42.24155,
+              "actual": 7.74845,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "integer_inputs",
+              "args": [
+                200,
+                10
+              ],
+              "expected": 180.0,
+              "actual": 20.0,
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "false_positive_tests": []
+        },
+        "revised_suite": {
+          "function_name": "discount",
+          "tests": [
+            {
+              "name": "standard_discount",
+              "args": [
+                100.0,
+                20.0
+              ],
+              "expected": 80.0
+            },
+            {
+              "name": "zero_percent_discount",
+              "args": [
+                100.0,
+                0.0
+              ],
+              "expected": 100.0
+            },
+            {
+              "name": "full_discount",
+              "args": [
+                50.0,
+                100.0
+              ],
+              "expected": 0.0
+            },
+            {
+              "name": "fractional_price_and_discount",
+              "args": [
+                49.99,
+                15.5
+              ],
+              "expected": 42.24155
+            },
+            {
+              "name": "zero_price",
+              "args": [
+                0.0,
+                50.0
+              ],
+              "expected": 0.0
+            },
+            {
+              "name": "integer_inputs",
+              "args": [
+                200,
+                10
+              ],
+              "expected": 180.0
+            }
+          ]
+        },
+        "revised_evaluation": {
+          "bug_id": "CS001",
+          "function_name": "discount",
+          "total_generated_tests": 6,
+          "bug_detected": true,
+          "detected_test_count": 5,
+          "false_positive_count": 0,
+          "buggy_results": [
+            {
+              "name": "standard_discount",
+              "args": [
+                100.0,
+                20.0
+              ],
+              "expected": 80.0,
+              "actual": 20.0,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "zero_percent_discount",
+              "args": [
+                100.0,
+                0.0
+              ],
+              "expected": 100.0,
+              "actual": 0.0,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "full_discount",
+              "args": [
+                50.0,
+                100.0
+              ],
+              "expected": 0.0,
+              "actual": 50.0,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "fractional_price_and_discount",
+              "args": [
+                49.99,
+                15.5
+              ],
+              "expected": 42.24155,
+              "actual": 7.74845,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "zero_price",
+              "args": [
+                0.0,
+                50.0
+              ],
+              "expected": 0.0,
+              "actual": 0.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "integer_inputs",
+              "args": [
+                200,
+                10
+              ],
+              "expected": 180.0,
+              "actual": 20.0,
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "fixed_results": [
+            {
+              "name": "standard_discount",
+              "args": [
+                100.0,
+                20.0
+              ],
+              "expected": 80.0,
+              "actual": 80.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "zero_percent_discount",
+              "args": [
+                100.0,
+                0.0
+              ],
+              "expected": 100.0,
+              "actual": 100.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "full_discount",
+              "args": [
+                50.0,
+                100.0
+              ],
+              "expected": 0.0,
+              "actual": 0.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "fractional_price_and_discount",
+              "args": [
+                49.99,
+                15.5
+              ],
+              "expected": 42.24155,
+              "actual": 42.241550000000004,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "zero_price",
+              "args": [
+                0.0,
+                50.0
+              ],
+              "expected": 0.0,
+              "actual": 0.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "integer_inputs",
+              "args": [
+                200,
+                10
+              ],
+              "expected": 180.0,
+              "actual": 180.0,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "detected_tests": [
+            {
+              "name": "standard_discount",
+              "args": [
+                100.0,
+                20.0
+              ],
+              "expected": 80.0,
+              "actual": 20.0,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "zero_percent_discount",
+              "args": [
+                100.0,
+                0.0
+              ],
+              "expected": 100.0,
+              "actual": 0.0,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "full_discount",
+              "args": [
+                50.0,
+                100.0
+              ],
+              "expected": 0.0,
+              "actual": 50.0,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "fractional_price_and_discount",
+              "args": [
+                49.99,
+                15.5
+              ],
+              "expected": 42.24155,
+              "actual": 7.74845,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "integer_inputs",
+              "args": [
+                200,
+                10
+              ],
+              "expected": 180.0,
+              "actual": 20.0,
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "false_positive_tests": []
+        },
+        "initial_generation_latency_seconds": 14.8861,
+        "revision_latency_seconds": 1.6103,
+        "total_generation_latency_seconds": 16.4964
+      },
+      "trial_id": "trial_03",
+      "trial_timestamp": "2026-11-01T15:09:21.578480+00:00"
+    },
+    {
+      "bug_id": "CS002",
+      "category": "boundary",
+      "description": "Incorrect adult-age boundary",
+      "function_name": "is_adult",
+      "experiment_design": "paired_shared_initial_suite_v1",
+      "generation_prompt_version": "test_generation_v2",
+      "feedback_prompt_version": "execution_feedback_v1",
+      "evaluator_version": "type_aware_float_tolerance_v1",
+      "benchmark_version": "benchmark_v2",
+      "baseline": {
+        "suite": {
+          "function_name": "is_adult",
+          "tests": [
+            {
+              "name": "test_age_below_eighteen",
+              "args": [
+                17
+              ],
+              "expected": false
+            },
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true
+            },
+            {
+              "name": "test_age_above_eighteen",
+              "args": [
+                19
+              ],
+              "expected": true
+            },
+            {
+              "name": "test_child_age",
+              "args": [
+                5
+              ],
+              "expected": false
+            },
+            {
+              "name": "test_senior_age",
+              "args": [
+                99
+              ],
+              "expected": true
+            },
+            {
+              "name": "test_zero_age",
+              "args": [
+                0
+              ],
+              "expected": false
+            },
+            {
+              "name": "test_negative_age",
+              "args": [
+                -1
+              ],
+              "expected": false
+            }
+          ]
+        },
+        "evaluation": {
+          "bug_id": "CS002",
+          "function_name": "is_adult",
+          "total_generated_tests": 7,
+          "bug_detected": true,
+          "detected_test_count": 1,
+          "false_positive_count": 0,
+          "buggy_results": [
+            {
+              "name": "test_age_below_eighteen",
+              "args": [
+                17
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true,
+              "actual": false,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "test_age_above_eighteen",
+              "args": [
+                19
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_child_age",
+              "args": [
+                5
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_senior_age",
+              "args": [
+                99
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_zero_age",
+              "args": [
+                0
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_negative_age",
+              "args": [
+                -1
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "fixed_results": [
+            {
+              "name": "test_age_below_eighteen",
+              "args": [
+                17
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_above_eighteen",
+              "args": [
+                19
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_child_age",
+              "args": [
+                5
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_senior_age",
+              "args": [
+                99
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_zero_age",
+              "args": [
+                0
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_negative_age",
+              "args": [
+                -1
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "detected_tests": [
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true,
+              "actual": false,
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "false_positive_tests": []
+        },
+        "generation_latency_seconds": 1.8705
+      },
+      "feedback": {
+        "initial_suite": {
+          "function_name": "is_adult",
+          "tests": [
+            {
+              "name": "test_age_below_eighteen",
+              "args": [
+                17
+              ],
+              "expected": false
+            },
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true
+            },
+            {
+              "name": "test_age_above_eighteen",
+              "args": [
+                19
+              ],
+              "expected": true
+            },
+            {
+              "name": "test_child_age",
+              "args": [
+                5
+              ],
+              "expected": false
+            },
+            {
+              "name": "test_senior_age",
+              "args": [
+                99
+              ],
+              "expected": true
+            },
+            {
+              "name": "test_zero_age",
+              "args": [
+                0
+              ],
+              "expected": false
+            },
+            {
+              "name": "test_negative_age",
+              "args": [
+                -1
+              ],
+              "expected": false
+            }
+          ]
+        },
+        "initial_execution": [
+          {
+            "name": "test_age_below_eighteen",
+            "args": [
+              17
+            ],
+            "expected": false,
+            "actual": false,
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "test_age_exactly_eighteen",
+            "args": [
+              18
+            ],
+            "expected": true,
+            "actual": false,
+            "status": "FAIL",
+            "error": null
+          },
+          {
+            "name": "test_age_above_eighteen",
+            "args": [
+              19
+            ],
+            "expected": true,
+            "actual": true,
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "test_child_age",
+            "args": [
+              5
+            ],
+            "expected": false,
+            "actual": false,
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "test_senior_age",
+            "args": [
+              99
+            ],
+            "expected": true,
+            "actual": true,
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "test_zero_age",
+            "args": [
+              0
+            ],
+            "expected": false,
+            "actual": false,
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "test_negative_age",
+            "args": [
+              -1
+            ],
+            "expected": false,
+            "actual": false,
+            "status": "PASS",
+            "error": null
+          }
+        ],
+        "initial_evaluation": {
+          "bug_id": "CS002",
+          "function_name": "is_adult",
+          "total_generated_tests": 7,
+          "bug_detected": true,
+          "detected_test_count": 1,
+          "false_positive_count": 0,
+          "buggy_results": [
+            {
+              "name": "test_age_below_eighteen",
+              "args": [
+                17
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true,
+              "actual": false,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "test_age_above_eighteen",
+              "args": [
+                19
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_child_age",
+              "args": [
+                5
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_senior_age",
+              "args": [
+                99
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_zero_age",
+              "args": [
+                0
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_negative_age",
+              "args": [
+                -1
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "fixed_results": [
+            {
+              "name": "test_age_below_eighteen",
+              "args": [
+                17
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_above_eighteen",
+              "args": [
+                19
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_child_age",
+              "args": [
+                5
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_senior_age",
+              "args": [
+                99
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_zero_age",
+              "args": [
+                0
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_negative_age",
+              "args": [
+                -1
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "detected_tests": [
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true,
+              "actual": false,
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "false_positive_tests": []
+        },
+        "revised_suite": {
+          "function_name": "is_adult",
+          "tests": [
+            {
+              "name": "test_age_below_eighteen",
+              "args": [
+                17
+              ],
+              "expected": false
+            },
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true
+            },
+            {
+              "name": "test_age_above_eighteen",
+              "args": [
+                19
+              ],
+              "expected": true
+            },
+            {
+              "name": "test_child_age",
+              "args": [
+                5
+              ],
+              "expected": false
+            },
+            {
+              "name": "test_senior_age",
+              "args": [
+                99
+              ],
+              "expected": true
+            },
+            {
+              "name": "test_zero_age",
+              "args": [
+                0
+              ],
+              "expected": false
+            },
+            {
+              "name": "test_negative_age",
+              "args": [
+                -1
+              ],
+              "expected": false
+            }
+          ]
+        },
+        "revised_evaluation": {
+          "bug_id": "CS002",
+          "function_name": "is_adult",
+          "total_generated_tests": 7,
+          "bug_detected": true,
+          "detected_test_count": 1,
+          "false_positive_count": 0,
+          "buggy_results": [
+            {
+              "name": "test_age_below_eighteen",
+              "args": [
+                17
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true,
+              "actual": false,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "test_age_above_eighteen",
+              "args": [
+                19
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_child_age",
+              "args": [
+                5
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_senior_age",
+              "args": [
+                99
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_zero_age",
+              "args": [
+                0
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_negative_age",
+              "args": [
+                -1
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "fixed_results": [
+            {
+              "name": "test_age_below_eighteen",
+              "args": [
+                17
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_age_above_eighteen",
+              "args": [
+                19
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_child_age",
+              "args": [
+                5
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_senior_age",
+              "args": [
+                99
+              ],
+              "expected": true,
+              "actual": true,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_zero_age",
+              "args": [
+                0
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_negative_age",
+              "args": [
+                -1
+              ],
+              "expected": false,
+              "actual": false,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "detected_tests": [
+            {
+              "name": "test_age_exactly_eighteen",
+              "args": [
+                18
+              ],
+              "expected": true,
+              "actual": false,
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "false_positive_tests": []
+        },
+        "initial_generation_latency_seconds": 1.8705,
+        "revision_latency_seconds": 1.6777,
+        "total_generation_latency_seconds": 3.5481
+      },
+      "trial_id": "trial_03",
+      "trial_timestamp": "2026-11-01T15:09:25.142638+00:00"
+    },
+    {
+      "bug_id": "CS003",
+      "category": "edge_case",
+      "description": "Average calculation fails on empty input",
+      "function_name": "safe_average",
+      "experiment_design": "paired_shared_initial_suite_v1",
+      "generation_prompt_version": "test_generation_v2",
+      "feedback_prompt_version": "execution_feedback_v1",
+      "evaluator_version": "type_aware_float_tolerance_v1",
+      "benchmark_version": "benchmark_v2",
+      "baseline": {
+        "suite": {
+          "function_name": "safe_average",
+          "tests": [
+            {
+              "name": "test_empty_list",
+              "args": [
+                []
+              ],
+              "expected": null
+            },
+            {
+              "name": "test_single_value",
+              "args": [
+                [
+                  5
+                ]
+              ],
+              "expected": 5
+            },
+            {
+              "name": "test_multiple_positive_integers",
+              "args": [
+                [
+                  2,
+                  4,
+                  6,
+                  8
+                ]
+              ],
+              "expected": 5.0
+            },
+            {
+              "name": "test_mixed_positive_and_negative_numbers",
+              "args": [
+                [
+                  -10,
+                  0,
+                  10
+                ]
+              ],
+              "expected": 0.0
+            },
+            {
+              "name": "test_floating_point_numbers",
+              "args": [
+                [
+                  1.5,
+                  2.5,
+                  3.5
+                ]
+              ],
+              "expected": 2.5
+            },
+            {
+              "name": "test_single_negative_value",
+              "args": [
+                [
+                  -7
+                ]
+              ],
+              "expected": -7
+            },
+            {
+              "name": "test_all_zeros",
+              "args": [
+                [
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "expected": 0.0
+            }
+          ]
+        },
+        "evaluation": {
+          "bug_id": "CS003",
+          "function_name": "safe_average",
+          "total_generated_tests": 7,
+          "bug_detected": true,
+          "detected_test_count": 1,
+          "false_positive_count": 0,
+          "buggy_results": [
+            {
+              "name": "test_empty_list",
+              "args": [
+                []
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "ERROR",
+              "error": "ZeroDivisionError: division by zero"
+            },
+            {
+              "name": "test_single_value",
+              "args": [
+                [
+                  5
+                ]
+              ],
+              "expected": 5,
+              "actual": 5.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_multiple_positive_integers",
+              "args": [
+                [
+                  2,
+                  4,
+                  6,
+                  8
+                ]
+              ],
+              "expected": 5.0,
+              "actual": 5.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_mixed_positive_and_negative_numbers",
+              "args": [
+                [
+                  -10,
+                  0,
+                  10
+                ]
+              ],
+              "expected": 0.0,
+              "actual": 0.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_floating_point_numbers",
+              "args": [
+                [
+                  1.5,
+                  2.5,
+                  3.5
+                ]
+              ],
+              "expected": 2.5,
+              "actual": 2.5,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_single_negative_value",
+              "args": [
+                [
+                  -7
+                ]
+              ],
+              "expected": -7,
+              "actual": -7.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_all_zeros",
+              "args": [
+                [
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "expected": 0.0,
+              "actual": 0.0,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "fixed_results": [
+            {
+              "name": "test_empty_list",
+              "args": [
+                []
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_single_value",
+              "args": [
+                [
+                  5
+                ]
+              ],
+              "expected": 5,
+              "actual": 5.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_multiple_positive_integers",
+              "args": [
+                [
+                  2,
+                  4,
+                  6,
+                  8
+                ]
+              ],
+              "expected": 5.0,
+              "actual": 5.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_mixed_positive_and_negative_numbers",
+              "args": [
+                [
+                  -10,
+                  0,
+                  10
+                ]
+              ],
+              "expected": 0.0,
+              "actual": 0.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_floating_point_numbers",
+              "args": [
+                [
+                  1.5,
+                  2.5,
+                  3.5
+                ]
+              ],
+              "expected": 2.5,
+              "actual": 2.5,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_single_negative_value",
+              "args": [
+                [
+                  -7
+                ]
+              ],
+              "expected": -7,
+              "actual": -7.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_all_zeros",
+              "args": [
+                [
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "expected": 0.0,
+              "actual": 0.0,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "detected_tests": [
+            {
+              "name": "test_empty_list",
+              "args": [
+                []
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "ERROR",
+              "error": "ZeroDivisionError: division by zero"
+            }
+          ],
+          "false_positive_tests": []
+        },
+        "generation_latency_seconds": 1.3571
+      },
+      "feedback": {
+        "initial_suite": {
+          "function_name": "safe_average",
+          "tests": [
+            {
+              "name": "test_empty_list",
+              "args": [
+                []
+              ],
+              "expected": null
+            },
+            {
+              "name": "test_single_value",
+              "args": [
+                [
+                  5
+                ]
+              ],
+              "expected": 5
+            },
+            {
+              "name": "test_multiple_positive_integers",
+              "args": [
+                [
+                  2,
+                  4,
+                  6,
+                  8
+                ]
+              ],
+              "expected": 5.0
+            },
+            {
+              "name": "test_mixed_positive_and_negative_numbers",
+              "args": [
+                [
+                  -10,
+                  0,
+                  10
+                ]
+              ],
+              "expected": 0.0
+            },
+            {
+              "name": "test_floating_point_numbers",
+              "args": [
+                [
+                  1.5,
+                  2.5,
+                  3.5
+                ]
+              ],
+              "expected": 2.5
+            },
+            {
+              "name": "test_single_negative_value",
+              "args": [
+                [
+                  -7
+                ]
+              ],
+              "expected": -7
+            },
+            {
+              "name": "test_all_zeros",
+              "args": [
+                [
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "expected": 0.0
+            }
+          ]
+        },
+        "initial_execution": [
+          {
+            "name": "test_empty_list",
+            "args": [
+              []
+            ],
+            "expected": null,
+            "actual": null,
+            "status": "ERROR",
+            "error": "ZeroDivisionError: division by zero"
+          },
+          {
+            "name": "test_single_value",
+            "args": [
+              [
+                5
+              ]
+            ],
+            "expected": 5,
+            "actual": 5.0,
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "test_multiple_positive_integers",
+            "args": [
+              [
+                2,
+                4,
+                6,
+                8
+              ]
+            ],
+            "expected": 5.0,
+            "actual": 5.0,
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "test_mixed_positive_and_negative_numbers",
+            "args": [
+              [
+                -10,
+                0,
+                10
+              ]
+            ],
+            "expected": 0.0,
+            "actual": 0.0,
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "test_floating_point_numbers",
+            "args": [
+              [
+                1.5,
+                2.5,
+                3.5
+              ]
+            ],
+            "expected": 2.5,
+            "actual": 2.5,
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "test_single_negative_value",
+            "args": [
+              [
+                -7
+              ]
+            ],
+            "expected": -7,
+            "actual": -7.0,
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "test_all_zeros",
+            "args": [
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "expected": 0.0,
+            "actual": 0.0,
+            "status": "PASS",
+            "error": null
+          }
+        ],
+        "initial_evaluation": {
+          "bug_id": "CS003",
+          "function_name": "safe_average",
+          "total_generated_tests": 7,
+          "bug_detected": true,
+          "detected_test_count": 1,
+          "false_positive_count": 0,
+          "buggy_results": [
+            {
+              "name": "test_empty_list",
+              "args": [
+                []
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "ERROR",
+              "error": "ZeroDivisionError: division by zero"
+            },
+            {
+              "name": "test_single_value",
+              "args": [
+                [
+                  5
+                ]
+              ],
+              "expected": 5,
+              "actual": 5.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_multiple_positive_integers",
+              "args": [
+                [
+                  2,
+                  4,
+                  6,
+                  8
+                ]
+              ],
+              "expected": 5.0,
+              "actual": 5.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_mixed_positive_and_negative_numbers",
+              "args": [
+                [
+                  -10,
+                  0,
+                  10
+                ]
+              ],
+              "expected": 0.0,
+              "actual": 0.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_floating_point_numbers",
+              "args": [
+                [
+                  1.5,
+                  2.5,
+                  3.5
+                ]
+              ],
+              "expected": 2.5,
+              "actual": 2.5,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_single_negative_value",
+              "args": [
+                [
+                  -7
+                ]
+              ],
+              "expected": -7,
+              "actual": -7.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_all_zeros",
+              "args": [
+                [
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "expected": 0.0,
+              "actual": 0.0,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "fixed_results": [
+            {
+              "name": "test_empty_list",
+              "args": [
+                []
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_single_value",
+              "args": [
+                [
+                  5
+                ]
+              ],
+              "expected": 5,
+              "actual": 5.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_multiple_positive_integers",
+              "args": [
+                [
+                  2,
+                  4,
+                  6,
+                  8
+                ]
+              ],
+              "expected": 5.0,
+              "actual": 5.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_mixed_positive_and_negative_numbers",
+              "args": [
+                [
+                  -10,
+                  0,
+                  10
+                ]
+              ],
+              "expected": 0.0,
+              "actual": 0.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_floating_point_numbers",
+              "args": [
+                [
+                  1.5,
+                  2.5,
+                  3.5
+                ]
+              ],
+              "expected": 2.5,
+              "actual": 2.5,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_single_negative_value",
+              "args": [
+                [
+                  -7
+                ]
+              ],
+              "expected": -7,
+              "actual": -7.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_all_zeros",
+              "args": [
+                [
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "expected": 0.0,
+              "actual": 0.0,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "detected_tests": [
+            {
+              "name": "test_empty_list",
+              "args": [
+                []
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "ERROR",
+              "error": "ZeroDivisionError: division by zero"
+            }
+          ],
+          "false_positive_tests": []
+        },
+        "revised_suite": {
+          "function_name": "safe_average",
+          "tests": [
+            {
+              "name": "test_empty_list",
+              "args": [
+                []
+              ],
+              "expected": null
+            },
+            {
+              "name": "test_single_value",
+              "args": [
+                [
+                  5
+                ]
+              ],
+              "expected": 5.0
+            },
+            {
+              "name": "test_multiple_positive_integers",
+              "args": [
+                [
+                  2,
+                  4,
+                  6,
+                  8
+                ]
+              ],
+              "expected": 5.0
+            },
+            {
+              "name": "test_mixed_positive_and_negative_numbers",
+              "args": [
+                [
+                  -10,
+                  0,
+                  10
+                ]
+              ],
+              "expected": 0.0
+            },
+            {
+              "name": "test_floating_point_numbers",
+              "args": [
+                [
+                  1.5,
+                  2.5,
+                  3.5
+                ]
+              ],
+              "expected": 2.5
+            },
+            {
+              "name": "test_single_negative_value",
+              "args": [
+                [
+                  -7
+                ]
+              ],
+              "expected": -7.0
+            },
+            {
+              "name": "test_all_zeros",
+              "args": [
+                [
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "expected": 0.0
+            }
+          ]
+        },
+        "revised_evaluation": {
+          "bug_id": "CS003",
+          "function_name": "safe_average",
+          "total_generated_tests": 7,
+          "bug_detected": true,
+          "detected_test_count": 1,
+          "false_positive_count": 0,
+          "buggy_results": [
+            {
+              "name": "test_empty_list",
+              "args": [
+                []
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "ERROR",
+              "error": "ZeroDivisionError: division by zero"
+            },
+            {
+              "name": "test_single_value",
+              "args": [
+                [
+                  5
+                ]
+              ],
+              "expected": 5.0,
+              "actual": 5.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_multiple_positive_integers",
+              "args": [
+                [
+                  2,
+                  4,
+                  6,
+                  8
+                ]
+              ],
+              "expected": 5.0,
+              "actual": 5.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_mixed_positive_and_negative_numbers",
+              "args": [
+                [
+                  -10,
+                  0,
+                  10
+                ]
+              ],
+              "expected": 0.0,
+              "actual": 0.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_floating_point_numbers",
+              "args": [
+                [
+                  1.5,
+                  2.5,
+                  3.5
+                ]
+              ],
+              "expected": 2.5,
+              "actual": 2.5,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_single_negative_value",
+              "args": [
+                [
+                  -7
+                ]
+              ],
+              "expected": -7.0,
+              "actual": -7.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_all_zeros",
+              "args": [
+                [
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "expected": 0.0,
+              "actual": 0.0,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "fixed_results": [
+            {
+              "name": "test_empty_list",
+              "args": [
+                []
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_single_value",
+              "args": [
+                [
+                  5
+                ]
+              ],
+              "expected": 5.0,
+              "actual": 5.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_multiple_positive_integers",
+              "args": [
+                [
+                  2,
+                  4,
+                  6,
+                  8
+                ]
+              ],
+              "expected": 5.0,
+              "actual": 5.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_mixed_positive_and_negative_numbers",
+              "args": [
+                [
+                  -10,
+                  0,
+                  10
+                ]
+              ],
+              "expected": 0.0,
+              "actual": 0.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_floating_point_numbers",
+              "args": [
+                [
+                  1.5,
+                  2.5,
+                  3.5
+                ]
+              ],
+              "expected": 2.5,
+              "actual": 2.5,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_single_negative_value",
+              "args": [
+                [
+                  -7
+                ]
+              ],
+              "expected": -7.0,
+              "actual": -7.0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_all_zeros",
+              "args": [
+                [
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "expected": 0.0,
+              "actual": 0.0,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "detected_tests": [
+            {
+              "name": "test_empty_list",
+              "args": [
+                []
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "ERROR",
+              "error": "ZeroDivisionError: division by zero"
+            }
+          ],
+          "false_positive_tests": []
+        },
+        "initial_generation_latency_seconds": 1.3571,
+        "revision_latency_seconds": 1.2474,
+        "total_generation_latency_seconds": 2.6045
+      },
+      "trial_id": "trial_03",
+      "trial_timestamp": "2026-11-01T15:09:27.756711+00:00"
+    },
+    {
+      "bug_id": "CS004",
+      "category": "data_processing",
+      "description": "Duplicate removal must preserve order",
+      "function_name": "stable_unique",
+      "experiment_design": "paired_shared_initial_suite_v1",
+      "generation_prompt_version": "test_generation_v2",
+      "feedback_prompt_version": "execution_feedback_v1",
+      "evaluator_version": "type_aware_float_tolerance_v1",
+      "benchmark_version": "benchmark_v2",
+      "baseline": {
+        "suite": {
+          "function_name": "stable_unique",
+          "tests": [
+            {
+              "name": "empty_list",
+              "args": [
+                []
+              ],
+              "expected": []
+            },
+            {
+              "name": "no_duplicates",
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "name": "all_duplicates",
+              "args": [
+                [
+                  5,
+                  5,
+                  5,
+                  5
+                ]
+              ],
+              "expected": [
+                5
+              ]
+            },
+            {
+              "name": "mixed_duplicates_preserves_order",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9,
+                  2,
+                  6,
+                  5,
+                  3,
+                  5
+                ]
+              ],
+              "expected": [
+                3,
+                1,
+                4,
+                5,
+                9,
+                2,
+                6
+              ]
+            },
+            {
+              "name": "single_element",
+              "args": [
+                [
+                  42
+                ]
+              ],
+              "expected": [
+                42
+              ]
+            },
+            {
+              "name": "negative_numbers",
+              "args": [
+                [
+                  -1,
+                  -2,
+                  -1,
+                  -3,
+                  -2
+                ]
+              ],
+              "expected": [
+                -1,
+                -2,
+                -3
+              ]
+            },
+            {
+              "name": "zeros_and_mixed",
+              "args": [
+                [
+                  0,
+                  1,
+                  0,
+                  -1,
+                  0
+                ]
+              ],
+              "expected": [
+                0,
+                1,
+                -1
+              ]
+            }
+          ]
+        },
+        "evaluation": {
+          "bug_id": "CS004",
+          "function_name": "stable_unique",
+          "total_generated_tests": 7,
+          "bug_detected": true,
+          "detected_test_count": 2,
+          "false_positive_count": 0,
+          "buggy_results": [
+            {
+              "name": "empty_list",
+              "args": [
+                []
+              ],
+              "expected": [],
+              "actual": [],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "no_duplicates",
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ],
+              "actual": [
+                1,
+                2,
+                3
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "all_duplicates",
+              "args": [
+                [
+                  5,
+                  5,
+                  5,
+                  5
+                ]
+              ],
+              "expected": [
+                5
+              ],
+              "actual": [
+                5
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "mixed_duplicates_preserves_order",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9,
+                  2,
+                  6,
+                  5,
+                  3,
+                  5
+                ]
+              ],
+              "expected": [
+                3,
+                1,
+                4,
+                5,
+                9,
+                2,
+                6
+              ],
+              "actual": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                9
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "single_element",
+              "args": [
+                [
+                  42
+                ]
+              ],
+              "expected": [
+                42
+              ],
+              "actual": [
+                42
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "negative_numbers",
+              "args": [
+                [
+                  -1,
+                  -2,
+                  -1,
+                  -3,
+                  -2
+                ]
+              ],
+              "expected": [
+                -1,
+                -2,
+                -3
+              ],
+              "actual": [
+                -3,
+                -1,
+                -2
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "zeros_and_mixed",
+              "args": [
+                [
+                  0,
+                  1,
+                  0,
+                  -1,
+                  0
+                ]
+              ],
+              "expected": [
+                0,
+                1,
+                -1
+              ],
+              "actual": [
+                0,
+                1,
+                -1
+              ],
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "fixed_results": [
+            {
+              "name": "empty_list",
+              "args": [
+                []
+              ],
+              "expected": [],
+              "actual": [],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "no_duplicates",
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ],
+              "actual": [
+                1,
+                2,
+                3
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "all_duplicates",
+              "args": [
+                [
+                  5,
+                  5,
+                  5,
+                  5
+                ]
+              ],
+              "expected": [
+                5
+              ],
+              "actual": [
+                5
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "mixed_duplicates_preserves_order",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9,
+                  2,
+                  6,
+                  5,
+                  3,
+                  5
+                ]
+              ],
+              "expected": [
+                3,
+                1,
+                4,
+                5,
+                9,
+                2,
+                6
+              ],
+              "actual": [
+                3,
+                1,
+                4,
+                5,
+                9,
+                2,
+                6
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "single_element",
+              "args": [
+                [
+                  42
+                ]
+              ],
+              "expected": [
+                42
+              ],
+              "actual": [
+                42
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "negative_numbers",
+              "args": [
+                [
+                  -1,
+                  -2,
+                  -1,
+                  -3,
+                  -2
+                ]
+              ],
+              "expected": [
+                -1,
+                -2,
+                -3
+              ],
+              "actual": [
+                -1,
+                -2,
+                -3
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "zeros_and_mixed",
+              "args": [
+                [
+                  0,
+                  1,
+                  0,
+                  -1,
+                  0
+                ]
+              ],
+              "expected": [
+                0,
+                1,
+                -1
+              ],
+              "actual": [
+                0,
+                1,
+                -1
+              ],
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "detected_tests": [
+            {
+              "name": "mixed_duplicates_preserves_order",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9,
+                  2,
+                  6,
+                  5,
+                  3,
+                  5
+                ]
+              ],
+              "expected": [
+                3,
+                1,
+                4,
+                5,
+                9,
+                2,
+                6
+              ],
+              "actual": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                9
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "negative_numbers",
+              "args": [
+                [
+                  -1,
+                  -2,
+                  -1,
+                  -3,
+                  -2
+                ]
+              ],
+              "expected": [
+                -1,
+                -2,
+                -3
+              ],
+              "actual": [
+                -3,
+                -1,
+                -2
+              ],
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "false_positive_tests": []
+        },
+        "generation_latency_seconds": 1.7093
+      },
+      "feedback": {
+        "initial_suite": {
+          "function_name": "stable_unique",
+          "tests": [
+            {
+              "name": "empty_list",
+              "args": [
+                []
+              ],
+              "expected": []
+            },
+            {
+              "name": "no_duplicates",
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "name": "all_duplicates",
+              "args": [
+                [
+                  5,
+                  5,
+                  5,
+                  5
+                ]
+              ],
+              "expected": [
+                5
+              ]
+            },
+            {
+              "name": "mixed_duplicates_preserves_order",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9,
+                  2,
+                  6,
+                  5,
+                  3,
+                  5
+                ]
+              ],
+              "expected": [
+                3,
+                1,
+                4,
+                5,
+                9,
+                2,
+                6
+              ]
+            },
+            {
+              "name": "single_element",
+              "args": [
+                [
+                  42
+                ]
+              ],
+              "expected": [
+                42
+              ]
+            },
+            {
+              "name": "negative_numbers",
+              "args": [
+                [
+                  -1,
+                  -2,
+                  -1,
+                  -3,
+                  -2
+                ]
+              ],
+              "expected": [
+                -1,
+                -2,
+                -3
+              ]
+            },
+            {
+              "name": "zeros_and_mixed",
+              "args": [
+                [
+                  0,
+                  1,
+                  0,
+                  -1,
+                  0
+                ]
+              ],
+              "expected": [
+                0,
+                1,
+                -1
+              ]
+            }
+          ]
+        },
+        "initial_execution": [
+          {
+            "name": "empty_list",
+            "args": [
+              []
+            ],
+            "expected": [],
+            "actual": [],
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "no_duplicates",
+            "args": [
+              [
+                1,
+                2,
+                3
+              ]
+            ],
+            "expected": [
+              1,
+              2,
+              3
+            ],
+            "actual": [
+              1,
+              2,
+              3
+            ],
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "all_duplicates",
+            "args": [
+              [
+                5,
+                5,
+                5,
+                5
+              ]
+            ],
+            "expected": [
+              5
+            ],
+            "actual": [
+              5
+            ],
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "mixed_duplicates_preserves_order",
+            "args": [
+              [
+                3,
+                1,
+                4,
+                1,
+                5,
+                9,
+                2,
+                6,
+                5,
+                3,
+                5
+              ]
+            ],
+            "expected": [
+              3,
+              1,
+              4,
+              5,
+              9,
+              2,
+              6
+            ],
+            "actual": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              9
+            ],
+            "status": "FAIL",
+            "error": null
+          },
+          {
+            "name": "single_element",
+            "args": [
+              [
+                42
+              ]
+            ],
+            "expected": [
+              42
+            ],
+            "actual": [
+              42
+            ],
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "negative_numbers",
+            "args": [
+              [
+                -1,
+                -2,
+                -1,
+                -3,
+                -2
+              ]
+            ],
+            "expected": [
+              -1,
+              -2,
+              -3
+            ],
+            "actual": [
+              -3,
+              -1,
+              -2
+            ],
+            "status": "FAIL",
+            "error": null
+          },
+          {
+            "name": "zeros_and_mixed",
+            "args": [
+              [
+                0,
+                1,
+                0,
+                -1,
+                0
+              ]
+            ],
+            "expected": [
+              0,
+              1,
+              -1
+            ],
+            "actual": [
+              0,
+              1,
+              -1
+            ],
+            "status": "PASS",
+            "error": null
+          }
+        ],
+        "initial_evaluation": {
+          "bug_id": "CS004",
+          "function_name": "stable_unique",
+          "total_generated_tests": 7,
+          "bug_detected": true,
+          "detected_test_count": 2,
+          "false_positive_count": 0,
+          "buggy_results": [
+            {
+              "name": "empty_list",
+              "args": [
+                []
+              ],
+              "expected": [],
+              "actual": [],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "no_duplicates",
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ],
+              "actual": [
+                1,
+                2,
+                3
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "all_duplicates",
+              "args": [
+                [
+                  5,
+                  5,
+                  5,
+                  5
+                ]
+              ],
+              "expected": [
+                5
+              ],
+              "actual": [
+                5
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "mixed_duplicates_preserves_order",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9,
+                  2,
+                  6,
+                  5,
+                  3,
+                  5
+                ]
+              ],
+              "expected": [
+                3,
+                1,
+                4,
+                5,
+                9,
+                2,
+                6
+              ],
+              "actual": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                9
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "single_element",
+              "args": [
+                [
+                  42
+                ]
+              ],
+              "expected": [
+                42
+              ],
+              "actual": [
+                42
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "negative_numbers",
+              "args": [
+                [
+                  -1,
+                  -2,
+                  -1,
+                  -3,
+                  -2
+                ]
+              ],
+              "expected": [
+                -1,
+                -2,
+                -3
+              ],
+              "actual": [
+                -3,
+                -1,
+                -2
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "zeros_and_mixed",
+              "args": [
+                [
+                  0,
+                  1,
+                  0,
+                  -1,
+                  0
+                ]
+              ],
+              "expected": [
+                0,
+                1,
+                -1
+              ],
+              "actual": [
+                0,
+                1,
+                -1
+              ],
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "fixed_results": [
+            {
+              "name": "empty_list",
+              "args": [
+                []
+              ],
+              "expected": [],
+              "actual": [],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "no_duplicates",
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ],
+              "actual": [
+                1,
+                2,
+                3
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "all_duplicates",
+              "args": [
+                [
+                  5,
+                  5,
+                  5,
+                  5
+                ]
+              ],
+              "expected": [
+                5
+              ],
+              "actual": [
+                5
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "mixed_duplicates_preserves_order",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9,
+                  2,
+                  6,
+                  5,
+                  3,
+                  5
+                ]
+              ],
+              "expected": [
+                3,
+                1,
+                4,
+                5,
+                9,
+                2,
+                6
+              ],
+              "actual": [
+                3,
+                1,
+                4,
+                5,
+                9,
+                2,
+                6
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "single_element",
+              "args": [
+                [
+                  42
+                ]
+              ],
+              "expected": [
+                42
+              ],
+              "actual": [
+                42
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "negative_numbers",
+              "args": [
+                [
+                  -1,
+                  -2,
+                  -1,
+                  -3,
+                  -2
+                ]
+              ],
+              "expected": [
+                -1,
+                -2,
+                -3
+              ],
+              "actual": [
+                -1,
+                -2,
+                -3
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "zeros_and_mixed",
+              "args": [
+                [
+                  0,
+                  1,
+                  0,
+                  -1,
+                  0
+                ]
+              ],
+              "expected": [
+                0,
+                1,
+                -1
+              ],
+              "actual": [
+                0,
+                1,
+                -1
+              ],
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "detected_tests": [
+            {
+              "name": "mixed_duplicates_preserves_order",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9,
+                  2,
+                  6,
+                  5,
+                  3,
+                  5
+                ]
+              ],
+              "expected": [
+                3,
+                1,
+                4,
+                5,
+                9,
+                2,
+                6
+              ],
+              "actual": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                9
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "negative_numbers",
+              "args": [
+                [
+                  -1,
+                  -2,
+                  -1,
+                  -3,
+                  -2
+                ]
+              ],
+              "expected": [
+                -1,
+                -2,
+                -3
+              ],
+              "actual": [
+                -3,
+                -1,
+                -2
+              ],
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "false_positive_tests": []
+        },
+        "revised_suite": {
+          "function_name": "stable_unique",
+          "tests": [
+            {
+              "name": "empty_list",
+              "args": [
+                []
+              ],
+              "expected": []
+            },
+            {
+              "name": "no_duplicates",
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "name": "all_duplicates",
+              "args": [
+                [
+                  5,
+                  5,
+                  5,
+                  5
+                ]
+              ],
+              "expected": [
+                5
+              ]
+            },
+            {
+              "name": "mixed_duplicates_preserves_order",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9,
+                  2,
+                  6,
+                  5,
+                  3,
+                  5
+                ]
+              ],
+              "expected": [
+                3,
+                1,
+                4,
+                5,
+                9,
+                2,
+                6
+              ]
+            },
+            {
+              "name": "single_element",
+              "args": [
+                [
+                  42
+                ]
+              ],
+              "expected": [
+                42
+              ]
+            },
+            {
+              "name": "negative_numbers",
+              "args": [
+                [
+                  -1,
+                  -2,
+                  -1,
+                  -3,
+                  -2
+                ]
+              ],
+              "expected": [
+                -1,
+                -2,
+                -3
+              ]
+            },
+            {
+              "name": "zeros_and_mixed",
+              "args": [
+                [
+                  0,
+                  1,
+                  0,
+                  -1,
+                  0
+                ]
+              ],
+              "expected": [
+                0,
+                1,
+                -1
+              ]
+            }
+          ]
+        },
+        "revised_evaluation": {
+          "bug_id": "CS004",
+          "function_name": "stable_unique",
+          "total_generated_tests": 7,
+          "bug_detected": true,
+          "detected_test_count": 2,
+          "false_positive_count": 0,
+          "buggy_results": [
+            {
+              "name": "empty_list",
+              "args": [
+                []
+              ],
+              "expected": [],
+              "actual": [],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "no_duplicates",
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ],
+              "actual": [
+                1,
+                2,
+                3
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "all_duplicates",
+              "args": [
+                [
+                  5,
+                  5,
+                  5,
+                  5
+                ]
+              ],
+              "expected": [
+                5
+              ],
+              "actual": [
+                5
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "mixed_duplicates_preserves_order",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9,
+                  2,
+                  6,
+                  5,
+                  3,
+                  5
+                ]
+              ],
+              "expected": [
+                3,
+                1,
+                4,
+                5,
+                9,
+                2,
+                6
+              ],
+              "actual": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                9
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "single_element",
+              "args": [
+                [
+                  42
+                ]
+              ],
+              "expected": [
+                42
+              ],
+              "actual": [
+                42
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "negative_numbers",
+              "args": [
+                [
+                  -1,
+                  -2,
+                  -1,
+                  -3,
+                  -2
+                ]
+              ],
+              "expected": [
+                -1,
+                -2,
+                -3
+              ],
+              "actual": [
+                -3,
+                -1,
+                -2
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "zeros_and_mixed",
+              "args": [
+                [
+                  0,
+                  1,
+                  0,
+                  -1,
+                  0
+                ]
+              ],
+              "expected": [
+                0,
+                1,
+                -1
+              ],
+              "actual": [
+                0,
+                1,
+                -1
+              ],
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "fixed_results": [
+            {
+              "name": "empty_list",
+              "args": [
+                []
+              ],
+              "expected": [],
+              "actual": [],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "no_duplicates",
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ],
+              "actual": [
+                1,
+                2,
+                3
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "all_duplicates",
+              "args": [
+                [
+                  5,
+                  5,
+                  5,
+                  5
+                ]
+              ],
+              "expected": [
+                5
+              ],
+              "actual": [
+                5
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "mixed_duplicates_preserves_order",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9,
+                  2,
+                  6,
+                  5,
+                  3,
+                  5
+                ]
+              ],
+              "expected": [
+                3,
+                1,
+                4,
+                5,
+                9,
+                2,
+                6
+              ],
+              "actual": [
+                3,
+                1,
+                4,
+                5,
+                9,
+                2,
+                6
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "single_element",
+              "args": [
+                [
+                  42
+                ]
+              ],
+              "expected": [
+                42
+              ],
+              "actual": [
+                42
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "negative_numbers",
+              "args": [
+                [
+                  -1,
+                  -2,
+                  -1,
+                  -3,
+                  -2
+                ]
+              ],
+              "expected": [
+                -1,
+                -2,
+                -3
+              ],
+              "actual": [
+                -1,
+                -2,
+                -3
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "zeros_and_mixed",
+              "args": [
+                [
+                  0,
+                  1,
+                  0,
+                  -1,
+                  0
+                ]
+              ],
+              "expected": [
+                0,
+                1,
+                -1
+              ],
+              "actual": [
+                0,
+                1,
+                -1
+              ],
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "detected_tests": [
+            {
+              "name": "mixed_duplicates_preserves_order",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9,
+                  2,
+                  6,
+                  5,
+                  3,
+                  5
+                ]
+              ],
+              "expected": [
+                3,
+                1,
+                4,
+                5,
+                9,
+                2,
+                6
+              ],
+              "actual": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                9
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "negative_numbers",
+              "args": [
+                [
+                  -1,
+                  -2,
+                  -1,
+                  -3,
+                  -2
+                ]
+              ],
+              "expected": [
+                -1,
+                -2,
+                -3
+              ],
+              "actual": [
+                -3,
+                -1,
+                -2
+              ],
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "false_positive_tests": []
+        },
+        "initial_generation_latency_seconds": 1.7093,
+        "revision_latency_seconds": 1.9162,
+        "total_generation_latency_seconds": 3.6254
+      },
+      "trial_id": "trial_03",
+      "trial_timestamp": "2026-11-01T15:09:31.394962+00:00"
+    },
+    {
+      "bug_id": "CS005",
+      "category": "logic",
+      "description": "Middle-value calculation fails on even-length input",
+      "function_name": "middle_values",
+      "experiment_design": "paired_shared_initial_suite_v1",
+      "generation_prompt_version": "test_generation_v2",
+      "feedback_prompt_version": "execution_feedback_v1",
+      "evaluator_version": "type_aware_float_tolerance_v1",
+      "benchmark_version": "benchmark_v2",
+      "baseline": {
+        "suite": {
+          "function_name": "middle_values",
+          "tests": [
+            {
+              "name": "empty_list",
+              "args": [
+                []
+              ],
+              "expected": []
+            },
+            {
+              "name": "single_element_list",
+              "args": [
+                [
+                  5
+                ]
+              ],
+              "expected": [
+                5
+              ]
+            },
+            {
+              "name": "odd_length_list",
+              "args": [
+                [
+                  1,
+                  3,
+                  5,
+                  7,
+                  9
+                ]
+              ],
+              "expected": [
+                5
+              ]
+            },
+            {
+              "name": "even_length_list",
+              "args": [
+                [
+                  10,
+                  20,
+                  30,
+                  40
+                ]
+              ],
+              "expected": [
+                20,
+                30
+              ]
+            },
+            {
+              "name": "two_elements_list",
+              "args": [
+                [
+                  4,
+                  8
+                ]
+              ],
+              "expected": [
+                4,
+                8
+              ]
+            },
+            {
+              "name": "list_with_negative_integers",
+              "args": [
+                [
+                  -10,
+                  -5,
+                  0,
+                  5
+                ]
+              ],
+              "expected": [
+                -5,
+                0
+              ]
+            },
+            {
+              "name": "list_with_duplicate_values",
+              "args": [
+                [
+                  2,
+                  2,
+                  2,
+                  2,
+                  2
+                ]
+              ],
+              "expected": [
+                2
+              ]
+            },
+            {
+              "name": "preserves_input_list_order_and_content",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9
+                ]
+              ],
+              "expected": [
+                4,
+                1
+              ]
+            }
+          ]
+        },
+        "evaluation": {
+          "bug_id": "CS005",
+          "function_name": "middle_values",
+          "total_generated_tests": 8,
+          "bug_detected": true,
+          "detected_test_count": 4,
+          "false_positive_count": 0,
+          "buggy_results": [
+            {
+              "name": "empty_list",
+              "args": [
+                []
+              ],
+              "expected": [],
+              "actual": [],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "single_element_list",
+              "args": [
+                [
+                  5
+                ]
+              ],
+              "expected": [
+                5
+              ],
+              "actual": [
+                5
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "odd_length_list",
+              "args": [
+                [
+                  1,
+                  3,
+                  5,
+                  7,
+                  9
+                ]
+              ],
+              "expected": [
+                5
+              ],
+              "actual": [
+                5
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "even_length_list",
+              "args": [
+                [
+                  10,
+                  20,
+                  30,
+                  40
+                ]
+              ],
+              "expected": [
+                20,
+                30
+              ],
+              "actual": [
+                30
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "two_elements_list",
+              "args": [
+                [
+                  4,
+                  8
+                ]
+              ],
+              "expected": [
+                4,
+                8
+              ],
+              "actual": [
+                8
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "list_with_negative_integers",
+              "args": [
+                [
+                  -10,
+                  -5,
+                  0,
+                  5
+                ]
+              ],
+              "expected": [
+                -5,
+                0
+              ],
+              "actual": [
+                0
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "list_with_duplicate_values",
+              "args": [
+                [
+                  2,
+                  2,
+                  2,
+                  2,
+                  2
+                ]
+              ],
+              "expected": [
+                2
+              ],
+              "actual": [
+                2
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "preserves_input_list_order_and_content",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9
+                ]
+              ],
+              "expected": [
+                4,
+                1
+              ],
+              "actual": [
+                1
+              ],
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "fixed_results": [
+            {
+              "name": "empty_list",
+              "args": [
+                []
+              ],
+              "expected": [],
+              "actual": [],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "single_element_list",
+              "args": [
+                [
+                  5
+                ]
+              ],
+              "expected": [
+                5
+              ],
+              "actual": [
+                5
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "odd_length_list",
+              "args": [
+                [
+                  1,
+                  3,
+                  5,
+                  7,
+                  9
+                ]
+              ],
+              "expected": [
+                5
+              ],
+              "actual": [
+                5
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "even_length_list",
+              "args": [
+                [
+                  10,
+                  20,
+                  30,
+                  40
+                ]
+              ],
+              "expected": [
+                20,
+                30
+              ],
+              "actual": [
+                20,
+                30
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "two_elements_list",
+              "args": [
+                [
+                  4,
+                  8
+                ]
+              ],
+              "expected": [
+                4,
+                8
+              ],
+              "actual": [
+                4,
+                8
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "list_with_negative_integers",
+              "args": [
+                [
+                  -10,
+                  -5,
+                  0,
+                  5
+                ]
+              ],
+              "expected": [
+                -5,
+                0
+              ],
+              "actual": [
+                -5,
+                0
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "list_with_duplicate_values",
+              "args": [
+                [
+                  2,
+                  2,
+                  2,
+                  2,
+                  2
+                ]
+              ],
+              "expected": [
+                2
+              ],
+              "actual": [
+                2
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "preserves_input_list_order_and_content",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9
+                ]
+              ],
+              "expected": [
+                4,
+                1
+              ],
+              "actual": [
+                4,
+                1
+              ],
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "detected_tests": [
+            {
+              "name": "even_length_list",
+              "args": [
+                [
+                  10,
+                  20,
+                  30,
+                  40
+                ]
+              ],
+              "expected": [
+                20,
+                30
+              ],
+              "actual": [
+                30
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "two_elements_list",
+              "args": [
+                [
+                  4,
+                  8
+                ]
+              ],
+              "expected": [
+                4,
+                8
+              ],
+              "actual": [
+                8
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "list_with_negative_integers",
+              "args": [
+                [
+                  -10,
+                  -5,
+                  0,
+                  5
+                ]
+              ],
+              "expected": [
+                -5,
+                0
+              ],
+              "actual": [
+                0
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "preserves_input_list_order_and_content",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9
+                ]
+              ],
+              "expected": [
+                4,
+                1
+              ],
+              "actual": [
+                1
+              ],
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "false_positive_tests": []
+        },
+        "generation_latency_seconds": 1.9254
+      },
+      "feedback": {
+        "initial_suite": {
+          "function_name": "middle_values",
+          "tests": [
+            {
+              "name": "empty_list",
+              "args": [
+                []
+              ],
+              "expected": []
+            },
+            {
+              "name": "single_element_list",
+              "args": [
+                [
+                  5
+                ]
+              ],
+              "expected": [
+                5
+              ]
+            },
+            {
+              "name": "odd_length_list",
+              "args": [
+                [
+                  1,
+                  3,
+                  5,
+                  7,
+                  9
+                ]
+              ],
+              "expected": [
+                5
+              ]
+            },
+            {
+              "name": "even_length_list",
+              "args": [
+                [
+                  10,
+                  20,
+                  30,
+                  40
+                ]
+              ],
+              "expected": [
+                20,
+                30
+              ]
+            },
+            {
+              "name": "two_elements_list",
+              "args": [
+                [
+                  4,
+                  8
+                ]
+              ],
+              "expected": [
+                4,
+                8
+              ]
+            },
+            {
+              "name": "list_with_negative_integers",
+              "args": [
+                [
+                  -10,
+                  -5,
+                  0,
+                  5
+                ]
+              ],
+              "expected": [
+                -5,
+                0
+              ]
+            },
+            {
+              "name": "list_with_duplicate_values",
+              "args": [
+                [
+                  2,
+                  2,
+                  2,
+                  2,
+                  2
+                ]
+              ],
+              "expected": [
+                2
+              ]
+            },
+            {
+              "name": "preserves_input_list_order_and_content",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9
+                ]
+              ],
+              "expected": [
+                4,
+                1
+              ]
+            }
+          ]
+        },
+        "initial_execution": [
+          {
+            "name": "empty_list",
+            "args": [
+              []
+            ],
+            "expected": [],
+            "actual": [],
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "single_element_list",
+            "args": [
+              [
+                5
+              ]
+            ],
+            "expected": [
+              5
+            ],
+            "actual": [
+              5
+            ],
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "odd_length_list",
+            "args": [
+              [
+                1,
+                3,
+                5,
+                7,
+                9
+              ]
+            ],
+            "expected": [
+              5
+            ],
+            "actual": [
+              5
+            ],
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "even_length_list",
+            "args": [
+              [
+                10,
+                20,
+                30,
+                40
+              ]
+            ],
+            "expected": [
+              20,
+              30
+            ],
+            "actual": [
+              30
+            ],
+            "status": "FAIL",
+            "error": null
+          },
+          {
+            "name": "two_elements_list",
+            "args": [
+              [
+                4,
+                8
+              ]
+            ],
+            "expected": [
+              4,
+              8
+            ],
+            "actual": [
+              8
+            ],
+            "status": "FAIL",
+            "error": null
+          },
+          {
+            "name": "list_with_negative_integers",
+            "args": [
+              [
+                -10,
+                -5,
+                0,
+                5
+              ]
+            ],
+            "expected": [
+              -5,
+              0
+            ],
+            "actual": [
+              0
+            ],
+            "status": "FAIL",
+            "error": null
+          },
+          {
+            "name": "list_with_duplicate_values",
+            "args": [
+              [
+                2,
+                2,
+                2,
+                2,
+                2
+              ]
+            ],
+            "expected": [
+              2
+            ],
+            "actual": [
+              2
+            ],
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "preserves_input_list_order_and_content",
+            "args": [
+              [
+                3,
+                1,
+                4,
+                1,
+                5,
+                9
+              ]
+            ],
+            "expected": [
+              4,
+              1
+            ],
+            "actual": [
+              1
+            ],
+            "status": "FAIL",
+            "error": null
+          }
+        ],
+        "initial_evaluation": {
+          "bug_id": "CS005",
+          "function_name": "middle_values",
+          "total_generated_tests": 8,
+          "bug_detected": true,
+          "detected_test_count": 4,
+          "false_positive_count": 0,
+          "buggy_results": [
+            {
+              "name": "empty_list",
+              "args": [
+                []
+              ],
+              "expected": [],
+              "actual": [],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "single_element_list",
+              "args": [
+                [
+                  5
+                ]
+              ],
+              "expected": [
+                5
+              ],
+              "actual": [
+                5
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "odd_length_list",
+              "args": [
+                [
+                  1,
+                  3,
+                  5,
+                  7,
+                  9
+                ]
+              ],
+              "expected": [
+                5
+              ],
+              "actual": [
+                5
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "even_length_list",
+              "args": [
+                [
+                  10,
+                  20,
+                  30,
+                  40
+                ]
+              ],
+              "expected": [
+                20,
+                30
+              ],
+              "actual": [
+                30
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "two_elements_list",
+              "args": [
+                [
+                  4,
+                  8
+                ]
+              ],
+              "expected": [
+                4,
+                8
+              ],
+              "actual": [
+                8
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "list_with_negative_integers",
+              "args": [
+                [
+                  -10,
+                  -5,
+                  0,
+                  5
+                ]
+              ],
+              "expected": [
+                -5,
+                0
+              ],
+              "actual": [
+                0
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "list_with_duplicate_values",
+              "args": [
+                [
+                  2,
+                  2,
+                  2,
+                  2,
+                  2
+                ]
+              ],
+              "expected": [
+                2
+              ],
+              "actual": [
+                2
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "preserves_input_list_order_and_content",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9
+                ]
+              ],
+              "expected": [
+                4,
+                1
+              ],
+              "actual": [
+                1
+              ],
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "fixed_results": [
+            {
+              "name": "empty_list",
+              "args": [
+                []
+              ],
+              "expected": [],
+              "actual": [],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "single_element_list",
+              "args": [
+                [
+                  5
+                ]
+              ],
+              "expected": [
+                5
+              ],
+              "actual": [
+                5
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "odd_length_list",
+              "args": [
+                [
+                  1,
+                  3,
+                  5,
+                  7,
+                  9
+                ]
+              ],
+              "expected": [
+                5
+              ],
+              "actual": [
+                5
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "even_length_list",
+              "args": [
+                [
+                  10,
+                  20,
+                  30,
+                  40
+                ]
+              ],
+              "expected": [
+                20,
+                30
+              ],
+              "actual": [
+                20,
+                30
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "two_elements_list",
+              "args": [
+                [
+                  4,
+                  8
+                ]
+              ],
+              "expected": [
+                4,
+                8
+              ],
+              "actual": [
+                4,
+                8
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "list_with_negative_integers",
+              "args": [
+                [
+                  -10,
+                  -5,
+                  0,
+                  5
+                ]
+              ],
+              "expected": [
+                -5,
+                0
+              ],
+              "actual": [
+                -5,
+                0
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "list_with_duplicate_values",
+              "args": [
+                [
+                  2,
+                  2,
+                  2,
+                  2,
+                  2
+                ]
+              ],
+              "expected": [
+                2
+              ],
+              "actual": [
+                2
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "preserves_input_list_order_and_content",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9
+                ]
+              ],
+              "expected": [
+                4,
+                1
+              ],
+              "actual": [
+                4,
+                1
+              ],
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "detected_tests": [
+            {
+              "name": "even_length_list",
+              "args": [
+                [
+                  10,
+                  20,
+                  30,
+                  40
+                ]
+              ],
+              "expected": [
+                20,
+                30
+              ],
+              "actual": [
+                30
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "two_elements_list",
+              "args": [
+                [
+                  4,
+                  8
+                ]
+              ],
+              "expected": [
+                4,
+                8
+              ],
+              "actual": [
+                8
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "list_with_negative_integers",
+              "args": [
+                [
+                  -10,
+                  -5,
+                  0,
+                  5
+                ]
+              ],
+              "expected": [
+                -5,
+                0
+              ],
+              "actual": [
+                0
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "preserves_input_list_order_and_content",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9
+                ]
+              ],
+              "expected": [
+                4,
+                1
+              ],
+              "actual": [
+                1
+              ],
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "false_positive_tests": []
+        },
+        "revised_suite": {
+          "function_name": "middle_values",
+          "tests": [
+            {
+              "name": "empty_list",
+              "args": [
+                []
+              ],
+              "expected": []
+            },
+            {
+              "name": "single_element_list",
+              "args": [
+                [
+                  5
+                ]
+              ],
+              "expected": [
+                5
+              ]
+            },
+            {
+              "name": "odd_length_list",
+              "args": [
+                [
+                  1,
+                  3,
+                  5,
+                  7,
+                  9
+                ]
+              ],
+              "expected": [
+                5
+              ]
+            },
+            {
+              "name": "even_length_list",
+              "args": [
+                [
+                  10,
+                  20,
+                  30,
+                  40
+                ]
+              ],
+              "expected": [
+                20,
+                30
+              ]
+            },
+            {
+              "name": "two_elements_list",
+              "args": [
+                [
+                  4,
+                  8
+                ]
+              ],
+              "expected": [
+                4,
+                8
+              ]
+            },
+            {
+              "name": "list_with_negative_integers",
+              "args": [
+                [
+                  -10,
+                  -5,
+                  0,
+                  5
+                ]
+              ],
+              "expected": [
+                -5,
+                0
+              ]
+            },
+            {
+              "name": "list_with_duplicate_values",
+              "args": [
+                [
+                  2,
+                  2,
+                  2,
+                  2,
+                  2
+                ]
+              ],
+              "expected": [
+                2
+              ]
+            },
+            {
+              "name": "preserves_input_list_order_and_content",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9
+                ]
+              ],
+              "expected": [
+                4,
+                1
+              ]
+            }
+          ]
+        },
+        "revised_evaluation": {
+          "bug_id": "CS005",
+          "function_name": "middle_values",
+          "total_generated_tests": 8,
+          "bug_detected": true,
+          "detected_test_count": 4,
+          "false_positive_count": 0,
+          "buggy_results": [
+            {
+              "name": "empty_list",
+              "args": [
+                []
+              ],
+              "expected": [],
+              "actual": [],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "single_element_list",
+              "args": [
+                [
+                  5
+                ]
+              ],
+              "expected": [
+                5
+              ],
+              "actual": [
+                5
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "odd_length_list",
+              "args": [
+                [
+                  1,
+                  3,
+                  5,
+                  7,
+                  9
+                ]
+              ],
+              "expected": [
+                5
+              ],
+              "actual": [
+                5
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "even_length_list",
+              "args": [
+                [
+                  10,
+                  20,
+                  30,
+                  40
+                ]
+              ],
+              "expected": [
+                20,
+                30
+              ],
+              "actual": [
+                30
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "two_elements_list",
+              "args": [
+                [
+                  4,
+                  8
+                ]
+              ],
+              "expected": [
+                4,
+                8
+              ],
+              "actual": [
+                8
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "list_with_negative_integers",
+              "args": [
+                [
+                  -10,
+                  -5,
+                  0,
+                  5
+                ]
+              ],
+              "expected": [
+                -5,
+                0
+              ],
+              "actual": [
+                0
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "list_with_duplicate_values",
+              "args": [
+                [
+                  2,
+                  2,
+                  2,
+                  2,
+                  2
+                ]
+              ],
+              "expected": [
+                2
+              ],
+              "actual": [
+                2
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "preserves_input_list_order_and_content",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9
+                ]
+              ],
+              "expected": [
+                4,
+                1
+              ],
+              "actual": [
+                1
+              ],
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "fixed_results": [
+            {
+              "name": "empty_list",
+              "args": [
+                []
+              ],
+              "expected": [],
+              "actual": [],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "single_element_list",
+              "args": [
+                [
+                  5
+                ]
+              ],
+              "expected": [
+                5
+              ],
+              "actual": [
+                5
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "odd_length_list",
+              "args": [
+                [
+                  1,
+                  3,
+                  5,
+                  7,
+                  9
+                ]
+              ],
+              "expected": [
+                5
+              ],
+              "actual": [
+                5
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "even_length_list",
+              "args": [
+                [
+                  10,
+                  20,
+                  30,
+                  40
+                ]
+              ],
+              "expected": [
+                20,
+                30
+              ],
+              "actual": [
+                20,
+                30
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "two_elements_list",
+              "args": [
+                [
+                  4,
+                  8
+                ]
+              ],
+              "expected": [
+                4,
+                8
+              ],
+              "actual": [
+                4,
+                8
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "list_with_negative_integers",
+              "args": [
+                [
+                  -10,
+                  -5,
+                  0,
+                  5
+                ]
+              ],
+              "expected": [
+                -5,
+                0
+              ],
+              "actual": [
+                -5,
+                0
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "list_with_duplicate_values",
+              "args": [
+                [
+                  2,
+                  2,
+                  2,
+                  2,
+                  2
+                ]
+              ],
+              "expected": [
+                2
+              ],
+              "actual": [
+                2
+              ],
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "preserves_input_list_order_and_content",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9
+                ]
+              ],
+              "expected": [
+                4,
+                1
+              ],
+              "actual": [
+                4,
+                1
+              ],
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "detected_tests": [
+            {
+              "name": "even_length_list",
+              "args": [
+                [
+                  10,
+                  20,
+                  30,
+                  40
+                ]
+              ],
+              "expected": [
+                20,
+                30
+              ],
+              "actual": [
+                30
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "two_elements_list",
+              "args": [
+                [
+                  4,
+                  8
+                ]
+              ],
+              "expected": [
+                4,
+                8
+              ],
+              "actual": [
+                8
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "list_with_negative_integers",
+              "args": [
+                [
+                  -10,
+                  -5,
+                  0,
+                  5
+                ]
+              ],
+              "expected": [
+                -5,
+                0
+              ],
+              "actual": [
+                0
+              ],
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "preserves_input_list_order_and_content",
+              "args": [
+                [
+                  3,
+                  1,
+                  4,
+                  1,
+                  5,
+                  9
+                ]
+              ],
+              "expected": [
+                4,
+                1
+              ],
+              "actual": [
+                1
+              ],
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "false_positive_tests": []
+        },
+        "initial_generation_latency_seconds": 1.9254,
+        "revision_latency_seconds": 2.0965,
+        "total_generation_latency_seconds": 4.0219
+      },
+      "trial_id": "trial_03",
+      "trial_timestamp": "2026-11-01T15:09:35.430025+00:00"
+    },
+    {
+      "bug_id": "CS006",
+      "category": "data_processing",
+      "description": "Second-largest calculation does not handle duplicate values",
+      "function_name": "second_largest",
+      "experiment_design": "paired_shared_initial_suite_v1",
+      "generation_prompt_version": "test_generation_v2",
+      "feedback_prompt_version": "execution_feedback_v1",
+      "evaluator_version": "type_aware_float_tolerance_v1",
+      "benchmark_version": "benchmark_v2",
+      "baseline": {
+        "suite": {
+          "function_name": "second_largest",
+          "tests": [
+            {
+              "name": "test_ordinary_distinct_values",
+              "args": [
+                [
+                  1,
+                  5,
+                  3,
+                  9,
+                  2
+                ]
+              ],
+              "expected": 5
+            },
+            {
+              "name": "test_with_duplicates",
+              "args": [
+                [
+                  4,
+                  1,
+                  4,
+                  3,
+                  2
+                ]
+              ],
+              "expected": 3
+            },
+            {
+              "name": "test_all_duplicates",
+              "args": [
+                [
+                  7,
+                  7,
+                  7,
+                  7
+                ]
+              ],
+              "expected": null
+            },
+            {
+              "name": "test_negative_numbers",
+              "args": [
+                [
+                  -10,
+                  -3,
+                  -20,
+                  -5
+                ]
+              ],
+              "expected": -5
+            },
+            {
+              "name": "test_mixed_positive_and_negative",
+              "args": [
+                [
+                  -2,
+                  5,
+                  0,
+                  5,
+                  -5
+                ]
+              ],
+              "expected": 0
+            },
+            {
+              "name": "test_two_distinct_elements",
+              "args": [
+                [
+                  10,
+                  20
+                ]
+              ],
+              "expected": 10
+            },
+            {
+              "name": "test_single_element",
+              "args": [
+                [
+                  42
+                ]
+              ],
+              "expected": null
+            },
+            {
+              "name": "test_empty_list",
+              "args": [
+                []
+              ],
+              "expected": null
+            }
+          ]
+        },
+        "evaluation": {
+          "bug_id": "CS006",
+          "function_name": "second_largest",
+          "total_generated_tests": 8,
+          "bug_detected": true,
+          "detected_test_count": 3,
+          "false_positive_count": 0,
+          "buggy_results": [
+            {
+              "name": "test_ordinary_distinct_values",
+              "args": [
+                [
+                  1,
+                  5,
+                  3,
+                  9,
+                  2
+                ]
+              ],
+              "expected": 5,
+              "actual": 5,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_with_duplicates",
+              "args": [
+                [
+                  4,
+                  1,
+                  4,
+                  3,
+                  2
+                ]
+              ],
+              "expected": 3,
+              "actual": 4,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "test_all_duplicates",
+              "args": [
+                [
+                  7,
+                  7,
+                  7,
+                  7
+                ]
+              ],
+              "expected": null,
+              "actual": 7,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "test_negative_numbers",
+              "args": [
+                [
+                  -10,
+                  -3,
+                  -20,
+                  -5
+                ]
+              ],
+              "expected": -5,
+              "actual": -5,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_mixed_positive_and_negative",
+              "args": [
+                [
+                  -2,
+                  5,
+                  0,
+                  5,
+                  -5
+                ]
+              ],
+              "expected": 0,
+              "actual": 5,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "test_two_distinct_elements",
+              "args": [
+                [
+                  10,
+                  20
+                ]
+              ],
+              "expected": 10,
+              "actual": 10,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_single_element",
+              "args": [
+                [
+                  42
+                ]
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_empty_list",
+              "args": [
+                []
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "fixed_results": [
+            {
+              "name": "test_ordinary_distinct_values",
+              "args": [
+                [
+                  1,
+                  5,
+                  3,
+                  9,
+                  2
+                ]
+              ],
+              "expected": 5,
+              "actual": 5,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_with_duplicates",
+              "args": [
+                [
+                  4,
+                  1,
+                  4,
+                  3,
+                  2
+                ]
+              ],
+              "expected": 3,
+              "actual": 3,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_all_duplicates",
+              "args": [
+                [
+                  7,
+                  7,
+                  7,
+                  7
+                ]
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_negative_numbers",
+              "args": [
+                [
+                  -10,
+                  -3,
+                  -20,
+                  -5
+                ]
+              ],
+              "expected": -5,
+              "actual": -5,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_mixed_positive_and_negative",
+              "args": [
+                [
+                  -2,
+                  5,
+                  0,
+                  5,
+                  -5
+                ]
+              ],
+              "expected": 0,
+              "actual": 0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_two_distinct_elements",
+              "args": [
+                [
+                  10,
+                  20
+                ]
+              ],
+              "expected": 10,
+              "actual": 10,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_single_element",
+              "args": [
+                [
+                  42
+                ]
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_empty_list",
+              "args": [
+                []
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "detected_tests": [
+            {
+              "name": "test_with_duplicates",
+              "args": [
+                [
+                  4,
+                  1,
+                  4,
+                  3,
+                  2
+                ]
+              ],
+              "expected": 3,
+              "actual": 4,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "test_all_duplicates",
+              "args": [
+                [
+                  7,
+                  7,
+                  7,
+                  7
+                ]
+              ],
+              "expected": null,
+              "actual": 7,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "test_mixed_positive_and_negative",
+              "args": [
+                [
+                  -2,
+                  5,
+                  0,
+                  5,
+                  -5
+                ]
+              ],
+              "expected": 0,
+              "actual": 5,
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "false_positive_tests": []
+        },
+        "generation_latency_seconds": 1.7343
+      },
+      "feedback": {
+        "initial_suite": {
+          "function_name": "second_largest",
+          "tests": [
+            {
+              "name": "test_ordinary_distinct_values",
+              "args": [
+                [
+                  1,
+                  5,
+                  3,
+                  9,
+                  2
+                ]
+              ],
+              "expected": 5
+            },
+            {
+              "name": "test_with_duplicates",
+              "args": [
+                [
+                  4,
+                  1,
+                  4,
+                  3,
+                  2
+                ]
+              ],
+              "expected": 3
+            },
+            {
+              "name": "test_all_duplicates",
+              "args": [
+                [
+                  7,
+                  7,
+                  7,
+                  7
+                ]
+              ],
+              "expected": null
+            },
+            {
+              "name": "test_negative_numbers",
+              "args": [
+                [
+                  -10,
+                  -3,
+                  -20,
+                  -5
+                ]
+              ],
+              "expected": -5
+            },
+            {
+              "name": "test_mixed_positive_and_negative",
+              "args": [
+                [
+                  -2,
+                  5,
+                  0,
+                  5,
+                  -5
+                ]
+              ],
+              "expected": 0
+            },
+            {
+              "name": "test_two_distinct_elements",
+              "args": [
+                [
+                  10,
+                  20
+                ]
+              ],
+              "expected": 10
+            },
+            {
+              "name": "test_single_element",
+              "args": [
+                [
+                  42
+                ]
+              ],
+              "expected": null
+            },
+            {
+              "name": "test_empty_list",
+              "args": [
+                []
+              ],
+              "expected": null
+            }
+          ]
+        },
+        "initial_execution": [
+          {
+            "name": "test_ordinary_distinct_values",
+            "args": [
+              [
+                1,
+                5,
+                3,
+                9,
+                2
+              ]
+            ],
+            "expected": 5,
+            "actual": 5,
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "test_with_duplicates",
+            "args": [
+              [
+                4,
+                1,
+                4,
+                3,
+                2
+              ]
+            ],
+            "expected": 3,
+            "actual": 4,
+            "status": "FAIL",
+            "error": null
+          },
+          {
+            "name": "test_all_duplicates",
+            "args": [
+              [
+                7,
+                7,
+                7,
+                7
+              ]
+            ],
+            "expected": null,
+            "actual": 7,
+            "status": "FAIL",
+            "error": null
+          },
+          {
+            "name": "test_negative_numbers",
+            "args": [
+              [
+                -10,
+                -3,
+                -20,
+                -5
+              ]
+            ],
+            "expected": -5,
+            "actual": -5,
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "test_mixed_positive_and_negative",
+            "args": [
+              [
+                -2,
+                5,
+                0,
+                5,
+                -5
+              ]
+            ],
+            "expected": 0,
+            "actual": 5,
+            "status": "FAIL",
+            "error": null
+          },
+          {
+            "name": "test_two_distinct_elements",
+            "args": [
+              [
+                10,
+                20
+              ]
+            ],
+            "expected": 10,
+            "actual": 10,
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "test_single_element",
+            "args": [
+              [
+                42
+              ]
+            ],
+            "expected": null,
+            "actual": null,
+            "status": "PASS",
+            "error": null
+          },
+          {
+            "name": "test_empty_list",
+            "args": [
+              []
+            ],
+            "expected": null,
+            "actual": null,
+            "status": "PASS",
+            "error": null
+          }
+        ],
+        "initial_evaluation": {
+          "bug_id": "CS006",
+          "function_name": "second_largest",
+          "total_generated_tests": 8,
+          "bug_detected": true,
+          "detected_test_count": 3,
+          "false_positive_count": 0,
+          "buggy_results": [
+            {
+              "name": "test_ordinary_distinct_values",
+              "args": [
+                [
+                  1,
+                  5,
+                  3,
+                  9,
+                  2
+                ]
+              ],
+              "expected": 5,
+              "actual": 5,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_with_duplicates",
+              "args": [
+                [
+                  4,
+                  1,
+                  4,
+                  3,
+                  2
+                ]
+              ],
+              "expected": 3,
+              "actual": 4,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "test_all_duplicates",
+              "args": [
+                [
+                  7,
+                  7,
+                  7,
+                  7
+                ]
+              ],
+              "expected": null,
+              "actual": 7,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "test_negative_numbers",
+              "args": [
+                [
+                  -10,
+                  -3,
+                  -20,
+                  -5
+                ]
+              ],
+              "expected": -5,
+              "actual": -5,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_mixed_positive_and_negative",
+              "args": [
+                [
+                  -2,
+                  5,
+                  0,
+                  5,
+                  -5
+                ]
+              ],
+              "expected": 0,
+              "actual": 5,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "test_two_distinct_elements",
+              "args": [
+                [
+                  10,
+                  20
+                ]
+              ],
+              "expected": 10,
+              "actual": 10,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_single_element",
+              "args": [
+                [
+                  42
+                ]
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_empty_list",
+              "args": [
+                []
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "fixed_results": [
+            {
+              "name": "test_ordinary_distinct_values",
+              "args": [
+                [
+                  1,
+                  5,
+                  3,
+                  9,
+                  2
+                ]
+              ],
+              "expected": 5,
+              "actual": 5,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_with_duplicates",
+              "args": [
+                [
+                  4,
+                  1,
+                  4,
+                  3,
+                  2
+                ]
+              ],
+              "expected": 3,
+              "actual": 3,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_all_duplicates",
+              "args": [
+                [
+                  7,
+                  7,
+                  7,
+                  7
+                ]
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_negative_numbers",
+              "args": [
+                [
+                  -10,
+                  -3,
+                  -20,
+                  -5
+                ]
+              ],
+              "expected": -5,
+              "actual": -5,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_mixed_positive_and_negative",
+              "args": [
+                [
+                  -2,
+                  5,
+                  0,
+                  5,
+                  -5
+                ]
+              ],
+              "expected": 0,
+              "actual": 0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_two_distinct_elements",
+              "args": [
+                [
+                  10,
+                  20
+                ]
+              ],
+              "expected": 10,
+              "actual": 10,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_single_element",
+              "args": [
+                [
+                  42
+                ]
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_empty_list",
+              "args": [
+                []
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "detected_tests": [
+            {
+              "name": "test_with_duplicates",
+              "args": [
+                [
+                  4,
+                  1,
+                  4,
+                  3,
+                  2
+                ]
+              ],
+              "expected": 3,
+              "actual": 4,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "test_all_duplicates",
+              "args": [
+                [
+                  7,
+                  7,
+                  7,
+                  7
+                ]
+              ],
+              "expected": null,
+              "actual": 7,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "test_mixed_positive_and_negative",
+              "args": [
+                [
+                  -2,
+                  5,
+                  0,
+                  5,
+                  -5
+                ]
+              ],
+              "expected": 0,
+              "actual": 5,
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "false_positive_tests": []
+        },
+        "revised_suite": {
+          "function_name": "second_largest",
+          "tests": [
+            {
+              "name": "test_ordinary_distinct_values",
+              "args": [
+                [
+                  1,
+                  5,
+                  3,
+                  9,
+                  2
+                ]
+              ],
+              "expected": 5
+            },
+            {
+              "name": "test_with_duplicates",
+              "args": [
+                [
+                  4,
+                  1,
+                  4,
+                  3,
+                  2
+                ]
+              ],
+              "expected": 3
+            },
+            {
+              "name": "test_all_duplicates",
+              "args": [
+                [
+                  7,
+                  7,
+                  7,
+                  7
+                ]
+              ],
+              "expected": null
+            },
+            {
+              "name": "test_negative_numbers",
+              "args": [
+                [
+                  -10,
+                  -3,
+                  -20,
+                  -5
+                ]
+              ],
+              "expected": -5
+            },
+            {
+              "name": "test_mixed_positive_and_negative",
+              "args": [
+                [
+                  -2,
+                  5,
+                  0,
+                  5,
+                  -5
+                ]
+              ],
+              "expected": 0
+            },
+            {
+              "name": "test_two_distinct_elements",
+              "args": [
+                [
+                  10,
+                  20
+                ]
+              ],
+              "expected": 10
+            },
+            {
+              "name": "test_single_element",
+              "args": [
+                [
+                  42
+                ]
+              ],
+              "expected": null
+            },
+            {
+              "name": "test_empty_list",
+              "args": [
+                []
+              ],
+              "expected": null
+            }
+          ]
+        },
+        "revised_evaluation": {
+          "bug_id": "CS006",
+          "function_name": "second_largest",
+          "total_generated_tests": 8,
+          "bug_detected": true,
+          "detected_test_count": 3,
+          "false_positive_count": 0,
+          "buggy_results": [
+            {
+              "name": "test_ordinary_distinct_values",
+              "args": [
+                [
+                  1,
+                  5,
+                  3,
+                  9,
+                  2
+                ]
+              ],
+              "expected": 5,
+              "actual": 5,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_with_duplicates",
+              "args": [
+                [
+                  4,
+                  1,
+                  4,
+                  3,
+                  2
+                ]
+              ],
+              "expected": 3,
+              "actual": 4,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "test_all_duplicates",
+              "args": [
+                [
+                  7,
+                  7,
+                  7,
+                  7
+                ]
+              ],
+              "expected": null,
+              "actual": 7,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "test_negative_numbers",
+              "args": [
+                [
+                  -10,
+                  -3,
+                  -20,
+                  -5
+                ]
+              ],
+              "expected": -5,
+              "actual": -5,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_mixed_positive_and_negative",
+              "args": [
+                [
+                  -2,
+                  5,
+                  0,
+                  5,
+                  -5
+                ]
+              ],
+              "expected": 0,
+              "actual": 5,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "test_two_distinct_elements",
+              "args": [
+                [
+                  10,
+                  20
+                ]
+              ],
+              "expected": 10,
+              "actual": 10,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_single_element",
+              "args": [
+                [
+                  42
+                ]
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_empty_list",
+              "args": [
+                []
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "fixed_results": [
+            {
+              "name": "test_ordinary_distinct_values",
+              "args": [
+                [
+                  1,
+                  5,
+                  3,
+                  9,
+                  2
+                ]
+              ],
+              "expected": 5,
+              "actual": 5,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_with_duplicates",
+              "args": [
+                [
+                  4,
+                  1,
+                  4,
+                  3,
+                  2
+                ]
+              ],
+              "expected": 3,
+              "actual": 3,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_all_duplicates",
+              "args": [
+                [
+                  7,
+                  7,
+                  7,
+                  7
+                ]
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_negative_numbers",
+              "args": [
+                [
+                  -10,
+                  -3,
+                  -20,
+                  -5
+                ]
+              ],
+              "expected": -5,
+              "actual": -5,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_mixed_positive_and_negative",
+              "args": [
+                [
+                  -2,
+                  5,
+                  0,
+                  5,
+                  -5
+                ]
+              ],
+              "expected": 0,
+              "actual": 0,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_two_distinct_elements",
+              "args": [
+                [
+                  10,
+                  20
+                ]
+              ],
+              "expected": 10,
+              "actual": 10,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_single_element",
+              "args": [
+                [
+                  42
+                ]
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "PASS",
+              "error": null
+            },
+            {
+              "name": "test_empty_list",
+              "args": [
+                []
+              ],
+              "expected": null,
+              "actual": null,
+              "status": "PASS",
+              "error": null
+            }
+          ],
+          "detected_tests": [
+            {
+              "name": "test_with_duplicates",
+              "args": [
+                [
+                  4,
+                  1,
+                  4,
+                  3,
+                  2
+                ]
+              ],
+              "expected": 3,
+              "actual": 4,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "test_all_duplicates",
+              "args": [
+                [
+                  7,
+                  7,
+                  7,
+                  7
+                ]
+              ],
+              "expected": null,
+              "actual": 7,
+              "status": "FAIL",
+              "error": null
+            },
+            {
+              "name": "test_mixed_positive_and_negative",
+              "args": [
+                [
+                  -2,
+                  5,
+                  0,
+                  5,
+                  -5
+                ]
+              ],
+              "expected": 0,
+              "actual": 5,
+              "status": "FAIL",
+              "error": null
+            }
+          ],
+          "false_positive_tests": []
+        },
+        "initial_generation_latency_seconds": 1.7343,
+        "revision_latency_seconds": 2.0324,
+        "total_generation_latency_seconds": 3.7668
+      },
+      "trial_id": "trial_03",
+      "trial_timestamp": "2026-11-01T15:09:39.210243+00:00"
+    }
+  ],
+  "errors": []
+}
